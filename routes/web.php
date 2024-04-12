@@ -2,16 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//LANDING
+Route::get('/','App\Http\Controllers\LandingController@index')->name('landing.index');
+
+
 //USER
-Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class]], function (){
+Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class], 'prefix'=>'profile'], function (){
     Route::get('/','App\Http\Controllers\User\MainController@index')->name('user.main.index');
     //
     Route::get('/offers','App\Http\Controllers\User\OffersController@index')->name('user.offers.index');
@@ -44,6 +45,7 @@ Route::get('/redirect/{link}', 'App\Http\Controllers\RedirectController@index')-
 
 //TEST
 Route::get('/test', 'App\Http\Controllers\TestController@index')->name('test');
+Route::get('/postback', 'App\Http\Controllers\PostbackController@index')->name('postback');
 
 Route::get('logout', function (){auth()->logout(); return redirect()->route('login');})->name('logout.get');
 
