@@ -1,7 +1,6 @@
 <style>
     .product-section {
-        border: 2px solid #000000; /* Цвет и толщина рамки */
-        border-radius: 20px;
+        border-radius: 100px;
         background-color: #ffffff;
         padding: 20px;
         margin-bottom: 20px;
@@ -14,12 +13,8 @@
     .product-section h3, .product-section p {
         margin-bottom: 0;
     }
-    .product-section img {
-        max-width: 20%;
-        height: auto;
-        margin-top: -10px;
-    }
 </style>
+
 
 <div class="product-section">
     <div class="container">
