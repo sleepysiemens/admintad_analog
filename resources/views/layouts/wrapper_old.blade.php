@@ -19,7 +19,7 @@
 </head>
 <body class="bg-light">
 
-@include('layouts.wrapper-blocks.header')
+@include('layouts.landing_blocks.header')
 
 <div class="container pt-5">
 

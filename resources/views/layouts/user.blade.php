@@ -29,4 +29,7 @@
                 ],
             ];
     @endphp
+
+    @include('layouts.wrapper-blocks.sidebar')
+
 @endsection

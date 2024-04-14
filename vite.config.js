@@ -16,6 +16,10 @@ export default defineConfig({
                 'resources/js/bootstrap.bundle.min.js',
                 'resources/js/tiny-slider.js',
                 'resources/js/custom.js',
+
+                'resources/dist/css/adminlte.css',
+                'resources/dist/js/adminlte.js',
+                'resources/dist/js/pages/dashboard.js',
             ],
             refresh: true,
         }),
