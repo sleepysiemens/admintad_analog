@@ -5,13 +5,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite([
- 'resources/css/app.css',
- 'resources/js/app.js'
+    <title>{{env('APP_NAME')}}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9a0abb07df.js" crossorigin="anonymous"></script>    @vite([
+    'resources/css/bootstrap.min.css',
+    'resources/css/tiny-slider.css',
+    'resources/css/style.css',
+
+    'resources/js/bootstrap.bundle.min.js',
+    'resources/js/tiny-slider.js',
+    'resources/js/custom.js',
  ])
 </head>
 <body class="bg-light">
+
+@include('layouts.wrapper-blocks.header')
+
 <div class="container pt-5">
 
     <div class="row">
