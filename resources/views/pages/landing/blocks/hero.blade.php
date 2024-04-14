@@ -26,6 +26,9 @@
                     animation-duration: 3s;
                     animation-iteration-count: infinite;
                     animation-timing-function: ease-in-out;
+
+                    -webkit-filter: drop-shadow(5px 5px 5px #222);
+                    filter: drop-shadow(5px 15px 5px #222);
                 }
             </style>
 
