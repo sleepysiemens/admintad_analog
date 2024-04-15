@@ -5,7 +5,6 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
                 'resources/css/style.css',
                 'resources/js/app.js',
 
@@ -17,9 +16,6 @@ export default defineConfig({
                 'resources/js/tiny-slider.js',
                 'resources/js/custom.js',
 
-                'resources/dist/css/adminlte.css',
-                'resources/dist/js/adminlte.js',
-                'resources/dist/js/pages/dashboard.js',
             ],
             refresh: true,
         }),
