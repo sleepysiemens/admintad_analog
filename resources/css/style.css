@@ -30,6 +30,8 @@ a {
   a.more {
     font-weight: 600; }
 
+
+
 .custom-navbar {
   background: #3c3e8f !important;
   padding-top: 20px;
@@ -748,4 +750,14 @@ textarea {
       display: -webkit-box;
       -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
+  }
+
+  .bg-navbar
+  {
+      background-color: #3c3e8f !important;
+  }
+
+  .bg-white
+  {
+      background-color: #fff !important;
   }

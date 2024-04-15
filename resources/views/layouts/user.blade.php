@@ -1,35 +1,35 @@
-@extends('layouts.wrapper')
+@extends('layouts.lk')
 @section('sidebar')
     @php
-        $navs=[
+            $navs=[
                 [
                 'link'=>'#',
                 'title'=>'Профиль',
-                'active'=>false
+                'icon'=>'fas fa-user'
                 ],
                 [
                 'link'=>'#',
                 'title'=>'Новости',
-                'active'=>false
+                'icon'=>'far fa-newspaper'
                 ],
                 [
                 'link'=>route('user.offers.index'),
                 'title'=>'Офферы',
-                'active'=>false
+                'icon'=>'fas fa-paste'
                 ],
                 [
                 'link'=>route('user.stat.index'),
                 'title'=>'Статистика',
-                'active'=>false
+                'icon'=>'fas fa-chart-line'
                 ],
                 [
                 'link'=>route('logout.get'),
                 'title'=>'Выйти',
-                'active'=>false
+                'icon'=>'fas fa-sign-out-alt'
                 ],
             ];
     @endphp
 
-    @include('layouts.wrapper-blocks.sidebar')
+    @include('layouts.lk-blocks.sidebar')
 
 @endsection

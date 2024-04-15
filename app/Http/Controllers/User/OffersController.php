@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content;
 use App\Models\Offer;
 use App\Models\UserOffer;
 use Illuminate\Http\Request;
@@ -18,6 +19,8 @@ class OffersController extends Controller
 
     public function show(Offer $offer)
     {
+        $offer_rules=Content::query()->where('title','=','Правила офферов')->first();
+
         $has_offer=UserOffer::query()
             ->where('user_id','=',auth()->user()->id)
             ->where('offer_id','=',$offer->id)
@@ -33,7 +36,7 @@ class OffersController extends Controller
             $personal_link=$personal_offer->link;
         }
 
-        return view('pages.user.offers.show', compact(['offer', 'has_offer', 'personal_link']));
+        return view('pages.user.offers.show', compact(['offer', 'has_offer', 'personal_link', 'offer_rules']));
     }
 
     public function get_link(Offer $offer)

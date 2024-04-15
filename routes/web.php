@@ -26,6 +26,8 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class]
 //ADMIN
 Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class],'prefix'=>'admin'], function (){
     Route::get('/','App\Http\Controllers\Admin\MainController@index')->name('admin.main.index');
+    Route::get('/settings','App\Http\Controllers\Admin\SettingsController@index')->name('admin.settings.index');
+    Route::post('/settings/save','App\Http\Controllers\Admin\SettingsController@save')->name('admin.settings.save');
     //
     Route::get('/offers','App\Http\Controllers\Admin\OffersController@index')->name('admin.offers.index');
     Route::get('/offer/{offer}','App\Http\Controllers\Admin\OffersController@show')->name('admin.offers.show');

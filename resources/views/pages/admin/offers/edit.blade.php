@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('Офферы') active @endsection
 
 @section('content')
     <a href="{{route('admin.offers.index')}}">{{__('Назад')}}</a>

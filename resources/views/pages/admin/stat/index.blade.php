@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('Статистика') active @endsection
 
 @section('content')
     <div class="card">

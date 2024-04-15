@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('Профиль') active @endsection
+
+@section('test')
     <p>test</p>
 @endsection
