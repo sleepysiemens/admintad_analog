@@ -20,7 +20,7 @@
                                 <img class="w-100" style="height: 200px; object-fit: cover" src="{{$offer->image}}">
                             </div>
                             <div class="col-8 py-2">
-                                <h4 class="text-black">{{$offer->title}}</h4>
+                                <h4 style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;" class="text-black">{{$offer->title}}</h4>
                                 <p style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;">
                                     {{$offer->description}}
                                 </p>
