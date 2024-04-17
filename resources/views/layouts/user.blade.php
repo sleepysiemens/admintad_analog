@@ -4,6 +4,11 @@
             $navs=[
                 [
                 'link'=>'#',
+                'title'=>'Дашборд',
+                'icon'=>'fas fa-tachometer-alt'
+                ],
+                [
+                'link'=>'#',
                 'title'=>'Профиль',
                 'icon'=>'fas fa-user'
                 ],

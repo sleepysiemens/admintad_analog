@@ -761,3 +761,12 @@ textarea {
   {
       background-color: #fff !important;
   }
+
+
+  .check-li::marker
+  {
+      content: '\2713';
+      font-weight: bold;
+      font-size: 16px;
+      color: #000000;
+  }

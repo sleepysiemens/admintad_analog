@@ -6,33 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Models\Content;
 use App\Models\Offer;
 use App\Models\UserOffer;
+use App\Services\SettingsService;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
+    public $settingsService;
+    public function __construct(SettingsService $settingsService)
+    {
+        $this->settingsService=$settingsService;
+    }
     public function index()
     {
-        $offer_rules=Content::query()->where('title','=','Правила офферов')->first();
+        $offer_rules=$this->settingsService->get_by_title('offer_rules');
+        $traffic_sources=$this->settingsService->get_by_title('traffic_sources');
 
-        return view('pages.admin.settings.index', compact('offer_rules'));
+        return view('pages.admin.settings.index', compact(['offer_rules', 'traffic_sources']));
     }
 
     public function save(Request $request)
     {
-        if(isset($request->offer_rules))
+        foreach ($request->text as $key => $value)
         {
-            $offer_rules=Content::query()->where('title','=','Правила офферов')->first();
-
-            if($offer_rules!=null)
-            {
-                $offer_rules->update(['text'=>$request->offer_rules]);
-            }
-            else
-            {
-                Content::create(['title'=>'Правила офферов', 'text'=>$request->offer_rules]);
-            }
+            $this->settingsService->update($key, $value);
         }
-
         return redirect()->route('admin.settings.index');
     }
 }

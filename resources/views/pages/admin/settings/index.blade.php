@@ -12,11 +12,32 @@
         @csrf
         <div class="form-group">
             <label>{{__('Правила офферов')}}</label>
-            <textarea class="form-control" name="offer_rules">@if($offer_rules!=null){{$offer_rules->text}}@endif</textarea>
+            <textarea class="form-control" id="summernote" name="text[offer_rules]" rows="7">@if($offer_rules!=null){{$offer_rules->text}}@endif</textarea>
+        </div>
+
+        <div class="form-group mt-4">
+            <label>{{__('Источники трафика')}}</label>
+            <textarea class="form-control fs-4" rows="10" name="text[traffic_sources]">@if($traffic_sources!=null){{$traffic_sources->text}}@endif</textarea>
         </div>
         <div class="form-group mt-4">
             <button type="submit" class="btn btn-primary">{{__('Сохранить')}}</button>
         </div>
 
     </form>
+@endsection
+
+@section('scripts')
+<script>
+    $('#summernote').summernote({
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+        ]
+    });
+</script>
 @endsection

@@ -1,4 +1,4 @@
-<nav class="custom-navbar navbar navbar navbar-expand-md navbar-light bg-white">
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-light bg-white pb-0">
 
     <div class="container">
 
@@ -17,13 +17,47 @@
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li>
-                    @if(auth()->user()==null)
+                @if(auth()->user()==null)
+                    <li>
                         <a class="nav-link" href="{{route('login')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                    @else
-                        <a class="nav-link d-flex" href="@if(auth()->user()->is_admin) {{route('admin.main.index')}} @else {{route('user.main.index')}} @endif "><i class="fas fa-user-circle fa-2x"></i></a>
-                    @endif
-                </li>
+
+                    </li>
+                @else
+                    <li class="d-flex">
+                        <div class="card bg-light rounded-pill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3 pe-1 d-flex">
+                                        <i class="fas fa-wallet fa-2x m-auto"></i>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="m-0">{{__('Баланс:')}}</p>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                0€
+                                            </div>
+                                            <div class="col-4">
+                                                0$
+                                            </div>
+                                            <div class="col-4">
+                                                0₽
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="d-flex">
+                        <div class="card bg-light rounded-pill position-relative">
+                            <a class="nav-link d-flex position-absolute d-flex" style="right: 80%; top: 0; bottom: 0" href="@if(auth()->user()->is_admin) {{route('admin.main.index')}} @else {{route('user.main.index')}} @endif "><i class="bg-white fas fa-user-circle fa-2x m-auto overflow-hidden"></i></a>
+                            <div class="card-body px-5">
+                                <p class="m-0 lh-1">(ID: {{auth()->user()->id}})</p>
+                                <p class="m-0 lh-1 mt-1">{{auth()->user()->name}}</p>
+                            </div>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

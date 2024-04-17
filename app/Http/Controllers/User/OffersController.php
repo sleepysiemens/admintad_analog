@@ -20,6 +20,7 @@ class OffersController extends Controller
     public function show(Offer $offer)
     {
         $offer_rules=Content::query()->where('title','=','Правила офферов')->first();
+        $traffic_sources=Content::query()->where('title','=','Источники трафика')->first();
 
         $has_offer=UserOffer::query()
             ->where('user_id','=',auth()->user()->id)
@@ -36,7 +37,7 @@ class OffersController extends Controller
             $personal_link=$personal_offer->link;
         }
 
-        return view('pages.user.offers.show', compact(['offer', 'has_offer', 'personal_link', 'offer_rules']));
+        return view('pages.user.offers.show', compact(['offer', 'has_offer', 'personal_link', 'offer_rules', 'traffic_sources']));
     }
 
     public function get_link(Offer $offer)
