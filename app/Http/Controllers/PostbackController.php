@@ -9,6 +9,8 @@ class PostbackController extends Controller
 {
     public function index(Request $request)
     {
-        Cache::put('test', $request->all());
+        $test=Cache::get('test');
+        $test[]=$request;
+        Cache::put('test', $test);
     }
 }
