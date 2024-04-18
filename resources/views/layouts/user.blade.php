@@ -3,7 +3,7 @@
     @php
             $navs=[
                 [
-                'link'=>'#',
+                'link'=>route('user.main.index'),
                 'title'=>'Дашборд',
                 'icon'=>'fas fa-tachometer-alt'
                 ],
@@ -26,11 +26,6 @@
                 'link'=>route('user.stat.index'),
                 'title'=>'Статистика',
                 'icon'=>'fas fa-chart-line'
-                ],
-                [
-                'link'=>route('logout.get'),
-                'title'=>'Выйти',
-                'icon'=>'fas fa-sign-out-alt'
                 ],
             ];
     @endphp

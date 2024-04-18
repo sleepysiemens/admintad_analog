@@ -20,9 +20,15 @@
                     <input type="text" class="form-control" name="link" placeholder="{{__('Ссылка')}}" required>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <div class="form-group mt-3">
-                            <input type="number" class="form-control" name="price" placeholder="{{__('Цена')}}" required>
+                    <div class="col-6 row">
+                        <div class="form-group mt-3 col-4">
+                            <input type="number" class="form-control" name="cost" placeholder="{{__('Цена')}}" required>
+                        </div>
+                        <div class="form-group mt-3 col-4">
+                            <input type="number" class="form-control" name="price" placeholder="{{__('Отчисления')}}" required>
+                        </div>
+                        <div class="form-group mt-3 col-4">
+                            <input type="text" class="form-control" name="country" placeholder="{{__('Страна')}}" required>
                         </div>
                     </div>
                     <div class="col-6">

@@ -1,4 +1,5 @@
 @extends('layouts.user')
+@section('Офферы') active @endsection
 
 @section('content')
     <a href="{{ route('user.offers.index') }}">{{ __('Назад') }}</a>
@@ -70,15 +71,15 @@
 
     <div class="row mt-3">
         <div class="col-md-12">
-            <div class="card shadow overflow-hidden border-0 position-relative" style="border-radius: 15px">
                 @if(!$has_offer)
-                    <a class="btn btn-sm btn-custom" style="padding: 0.40rem 0.8rem; font-size: 0.75rem; background-color: white; color: #1E90FF; border-color: #1E90FF;" href="{{route('user.offers.get_link', $offer->id)}}">{{__('Получить ссылку')}}</a>
+                    <a class="btn btn-primary bg-primary w-100 fs-4" href="{{route('user.offers.get_link', $offer->id)}}">{{__('Получить ссылку')}}</a>
                 @else
+                <div class="card shadow overflow-hidden border-0 position-relative" style="border-radius: 15px">
                     <div class="card-body w-100">
                         <p class="my-auto mx-2">{{route('redirector',$personal_link)}}</p>
                     </div>
+                </div>
                 @endif
-            </div>
         </div>
     </div>
 @endsection

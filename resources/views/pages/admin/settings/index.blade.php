@@ -20,7 +20,7 @@
             <textarea class="form-control fs-4" rows="10" name="text[traffic_sources]">@if($traffic_sources!=null){{$traffic_sources->text}}@endif</textarea>
         </div>
         <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">{{__('Сохранить')}}</button>
+            <button type="submit" class="btn btn-primary bg-primary">{{__('Сохранить')}}</button>
         </div>
 
     </form>

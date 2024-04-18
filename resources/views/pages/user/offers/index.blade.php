@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('Офферы', 'active')
+@section('Офферы') active @endsection
 
 @section('content')
     <div class="row mb-3 justify-content-between">
@@ -17,42 +17,40 @@
                         <span style="font-weight: bold; font-size: 10px;">{{__('exclusive')}}</span>
                     </span>
                     <div class="card-body bg-white">
-                        <h4 style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;" class="text-black">{{$offer->title}}</h4>
-                        <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
-                            {{$offer->description}}
-                            <p style="margin: 5px 0; border-top: 0.5px solid #DCDCDC;"></p>
-                        </p>
                         <div class="row">
                             <div class="col-4">
-                                <img class="w-100" style="height: 200px; object-fit: cover;" src="{{$offer->image}}">
+                                <img class="w-100" style="height: 160px; object-fit: cover;" src="{{$offer->image}}">
                             </div>
                             <div class="col-8">
-                            <p style="margin: 40px 0 0; margin-left: 40px;">
-    <span style="font-weight: bold;">{{__('Отчисления')}}:</span> 
-    <span style="font-weight: bold; color: black;">{{ $offer->price }}</span>
-</p>
-<p style="margin: 0 0; margin-left: 40px;">
-    <span style="font-weight: bold;">{{__('Стоимость')}}:</span> 
-    <span style="font-weight: bold; color: black;">{{ $offer->cost }}</span>
-</p>
-<p style="margin: 0 0; margin-left: 40px;">
-    <span style="font-weight: bold;">{{__('Страна')}}:</span> 
-    <span style="font-weight: bold; color: black;">{{ $offer->country }}</span>
-</p>
+                                <h4 style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;" class="text-black">{{$offer->title}}</h4>
 
+                                <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                    {{$offer->description}}
+                                </p>
+                                <div class="row justify-content-between">
+                                    <p class="col-6 my-auto">ID: {{$offer->id}}</p>
+                                    <div class="col-6">
+                                        <a href="{{ route('user.offers.show', $offer->id) }}" class="btn btn-sm btn-custom fs-5">
+                                            {{__('Подробнее')}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
 
-
+                        </div>
+                        <div class="row border-top mx-2 mt-3">
+                            <div class="col-4">
+                                <p class="m-0">{{__('Страна')}}</p>
+                                <p class="text-black m-0">{{$offer->country}}</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="m-0">{{__('Стоимость')}}</p>
+                                <p class="text-black m-0">{{$offer->cost}}</p>
 
                             </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row justify-content-between">
-                            <p class="col-auto my-auto">ID: {{$offer->id}}</p>
-                            <div class="col-auto">
-                                <a href="{{ route('user.offers.show', $offer->id) }}" class="btn btn-sm btn-custom" style="padding: 0.40rem 0.8rem; font-size: 0.75rem; background-color: white; color: #1E90FF; border-color: #1E90FF;">
-                                    {{__('Подробнее')}}
-                                </a>
+                            <div class="col-4">
+                                <p class="m-0">{{__('Отчисления')}}</p>
+                                <p class="text-black m-0" style="font-weight: 500">{{$offer->price}} ₽</p>
                             </div>
                         </div>
                     </div>

@@ -770,3 +770,67 @@ textarea {
       font-size: 16px;
       color: #000000;
   }
+
+
+.list-group-item.active
+{
+    background-color: #F4F7FE !important;
+    color: #3485FF !important;
+    opacity: 1;
+}
+
+.list-group-item
+{
+    color: rgba(0,0,0,.55)!important;
+    border-radius: 10px !important;
+}
+
+.list-group-item:hover
+{
+    background-color: #F4F7FE !important;
+}
+
+.bg-light-blue
+{
+    background-color: #F4F7FE !important;
+}
+
+.border-green
+{
+    border-color: #c4f4b4;
+}
+
+.bg-light-green
+{
+    background-color: #F7FFF9;
+}
+
+.text-green
+{
+    color: #28a745;
+}
+
+.text-blue
+{
+    color: #497ee3;
+}
+
+.border-light-blue
+{
+    border-color: #b4caf4;
+}
+
+.news-text
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.scroll
+{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

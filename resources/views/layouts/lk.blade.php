@@ -47,8 +47,8 @@
     </div>
     <div class="col-10">
         @include('layouts.lk-blocks.header')
-        <div class="bg-light h-100 shadow" style=" border-top-left-radius: 50px">
-            <div class="p-5">
+        <div class="bg-light-blue h-100" style=" border-top-left-radius: 50px">
+            <div style="padding: 45px">
                 @yield('content')
             </div>
         </div>

@@ -43,7 +43,6 @@ return new class extends Migration
                     'name'=>'traffic_sources',
                     'text'=>
                     'Web-сайты
-
 Дорвеи
 Контекстная реклама
 Тизерная реклама

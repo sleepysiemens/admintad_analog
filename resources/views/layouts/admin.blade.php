@@ -3,7 +3,7 @@
     @php
         $navs=[
                 [
-                'link'=>'#',
+                'link'=>route('admin.main.index'),
                 'title'=>'Дашборд',
                 'icon'=>'fas fa-tachometer-alt'
                 ],
