@@ -7,6 +7,9 @@
         <div class="col">
             <h2>{{__('Офферы')}}</h2>
         </div>
+        <div class="col d-flex justify-content-end">
+            <a href="{{route('admin.offers.create')}}" class="btn btn-primary bg-primary fs-4">{{__('Добавить оффер')}}</a>
+        </div>
     </div>
 
     <div class="row">
