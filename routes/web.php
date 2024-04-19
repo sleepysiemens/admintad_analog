@@ -47,7 +47,7 @@ Route::get('/redirect/{link}', 'App\Http\Controllers\RedirectController@index')-
 
 //TEST
 Route::get('/test', 'App\Http\Controllers\TestController@index')->name('test');
-Route::get('/postback', 'App\Http\Controllers\PostbackController@index')->name('postback');
+Route::post('/postback', 'App\Http\Controllers\PostbackController@index')->name('postback');
 
 Route::get('logout', function (){auth()->logout(); return redirect()->route('login');})->name('logout.get');
 
