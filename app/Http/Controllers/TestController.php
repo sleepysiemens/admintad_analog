@@ -12,6 +12,6 @@ class TestController extends Controller
     public function index()
     {
         if (Cache::has('test'))
-            dd(Cache::get('test'));
+            dd(json_decode(Cache::get('test')));
     }
 }

@@ -9,8 +9,9 @@ class PostbackController extends Controller
 {
     public function index(Request $request)
     {
-        $test=Cache::get('test');
+        $test=json_decode(Cache::get('test'));
         $test[]=$request;
-        Cache::put('test', $test);
+        $test[]='/';
+        Cache::put('test', json_encode($test));
     }
 }
