@@ -9,6 +9,7 @@ class PostbackController extends Controller
 {
     public function index(Request $request)
     {
+        Cache::flush();
         $test=json_decode(Cache::get('test'));
         $test[]=$request;
         $test[]='/';
