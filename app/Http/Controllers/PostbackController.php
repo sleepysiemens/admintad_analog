@@ -9,11 +9,11 @@ class PostbackController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $requestData = $request->all();
-            $cachedData = Cache::get('test', []);
+            $cachedData = json_decode(Cache::get('test'));
             $cachedData[] = $requestData;
-            Cache::put('test', $cachedData);
+            Cache::put('test', json_encode($cachedData));
 
             return response()->json(['message' => 'Data received and saved.'], 200);
         }
