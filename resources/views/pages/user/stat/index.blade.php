@@ -39,18 +39,22 @@
         @foreach($offers as $offer)
             <tr>
                 <td class="border-end">{{$offer->updated_at}}</td>
-                <td class="border-end">{{$offer->hosts_count}}</td>
+
+                <td class="border-end">{{$offer->host_count}}</td>
                 <td class="border-end">{{$offer->clicks}}</td>
                 <td class="border-end">{{$offer->tb}}</td>
-                <td class="border-end">{{$offer->unique_cr}}</td>
-                <td class="border-end">{{$offer->cr}}</td>
-                <td class="border-end">{{$offer->approve}}</td>
+
+                <td class="border-end">{{$offer->unique_cr * 100}}</td>
+                <td class="border-end">{{$offer->cr * 100}}</td>
+                <td class="border-end">{{$offer->approval_rate * 100}}</td>
+
                 <td class="border-end">{{$offer->total}}</td>
-                <td class="border-end">{{$offer->accepted}}</td>
+                <td class="border-end">{{$offer->approved}}</td>
                 <td class="border-end">{{$offer->waiting}}</td>
                 <td class="border-end">{{$offer->hold}}</td>
                 <td class="border-end">{{$offer->canceled}}</td>
                 <td class="border-end">{{$offer->trash}}</td>
+
                 <td class="border-end">{{$offer->rub}}</td>
                 <td class="border-end">{{$offer->usd}}</td>
                 <td class="">{{$offer->eur}}</td>

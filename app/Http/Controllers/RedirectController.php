@@ -31,6 +31,12 @@ class RedirectController extends Controller
             $user_offer->host_count=$user_offer->host_count+1;
         }
 
+        //TB
+        $user_offer->tb=$user_offer->clicks-$user_offer->host_count;
+
+        //Unique CR
+        $user_offer->unique_cr=round((($user_offer->host_count/$user_offer->clicks)),2);
+
         $user_offer->update();
         //dd($user_offer);
 

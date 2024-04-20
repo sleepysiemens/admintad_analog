@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\StatisticService;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
@@ -9,10 +10,15 @@ use Illuminate\Support\Facades\Cache;
 
 class TestController extends Controller
 {
+    public $statisticService;
+    public function __construct(StatisticService $statisticService)
+    {
+        $this->statisticService = $statisticService;
+    }
     public function index()
     {
-        if (Cache::has('test'))
-            dd(json_decode(Cache::get('test')));
+        $data=json_encode(['date_created'=>'2024-04-21','status'=>'in_processing','id_order'=>'8180008','ip'=>'127.0.0.1']);
+        $this->statisticService->update_statistic(json_decode($data));
     }
 
     public function test2()
@@ -25,7 +31,7 @@ class TestController extends Controller
             'api_key'          => '7s0pmKvFnmOidJS5rrXAIYltUp1qc1wjWAgN6h5DkfZHuZf6gMGQa8di3nW2obOl',
             'id_webmaster'     => '122301',
             'name'             => 'TEST API',
-            'phone'            => '1234567890',
+            'phone'            => '1234567833',
             'id_offer'         => '1316',
             'id_source'        => '40919',
             'id_stream'        => '186289',
