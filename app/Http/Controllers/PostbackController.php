@@ -9,9 +9,15 @@ class PostbackController extends Controller
 {
     public function index(Request $request)
     {
-        $test=json_decode(Cache::get('test'));
-        $test[]=$request;
-        $test[]='/';
-        Cache::put('test', json_encode($test));
+        if ($request->isMethod('post')) {
+            $requestData = $request->all();
+            $cachedData = Cache::get('test', []);
+            $cachedData[] = $requestData;
+            Cache::put('test', $cachedData);
+
+            return response()->json(['message' => 'Data received and saved.'], 200);
+        }
+
+        return response()->json(['message' => 'Method Not Allowed.'], 405);
     }
 }
