@@ -8,39 +8,46 @@ class StatisticService
 {
     public function update_statistic($data)
     {
-        $user_offer=UserOffer::query()->where('host','like','%'.$data->ip.'%')->first();
+        $user_offer=UserOffer::query()
+            ->join('offers','offers.id','=','user_offers.offer_id')
+            ->where('offers.source_offer_id',$data->id_offer)
+            ->where('host','like','%'.$data->ip.'%')
+            ->first();
 
-        switch ($data->status)
+        if($user_offer!=null)
         {
-            case 'in_processing':
-            case 'new':
-                $user_offer->waiting++;
-                $user_offer->total++;
-                break;
+            switch ($data->status)
+            {
+                case 'in_processing':
+                case 'new':
+                    $user_offer->waiting++;
+                    $user_offer->total++;
+                    break;
 
-            case 'fake':
-                $user_offer->trash++;
-                $user_offer->total++;
-                break;
+                case 'fake':
+                    $user_offer->trash++;
+                    $user_offer->total++;
+                    break;
 
-            case 'canceled':
-                $user_offer->canceled++;
-                $user_offer->total++;
-                break;
+                case 'canceled':
+                    $user_offer->canceled++;
+                    $user_offer->total++;
+                    break;
 
-            case 'success':
-                $user_offer->approved++;
-                $user_offer->total++;
-                break;
+                case 'success':
+                    $user_offer->approved++;
+                    $user_offer->total++;
+                    break;
+            }
+
+
+            //CR
+            $user_offer->cr=($user_offer->waiting + $user_offer->approved + $user_offer->hold)/ $user_offer->host_count;
+
+            //APPROVAL RATE
+            $user_offer->approval_rate=($user_offer->approved)/ $user_offer->host_count;
+
+            $user_offer->save();
         }
-
-
-        //CR
-        $user_offer->cr=($user_offer->waiting + $user_offer->approved + $user_offer->hold)/ $user_offer->host_count;
-
-        //APPROVAL RATE
-        $user_offer->approval_rate=($user_offer->approved)/ $user_offer->host_count;
-
-        $user_offer->save();
     }
 }
