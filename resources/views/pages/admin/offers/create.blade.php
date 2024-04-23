@@ -4,6 +4,7 @@
 @section('content')
     <a href="{{route('admin.offers.index')}}">{{__('Назад')}}</a>
     <form method="post" action="{{route('admin.offers.store')}}">
+        @method('put')
         @csrf
         <div class="container">
             <div class="row justify-content-center">
@@ -18,8 +19,8 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <label>{{__('id оффера в источнике')}}</label>
                             <div class="form-group mt-3">
+                                <label>{{__('id оффера в источнике')}}</label>
                                 <input type="text" class="form-control fs-4" name="source_offer_id" placeholder="{{__('id оффера')}}" required>
                             </div>
                         </div>

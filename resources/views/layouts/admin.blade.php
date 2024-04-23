@@ -13,7 +13,7 @@
                 'icon'=>'fas fa-user'
                 ],
                 [
-                'link'=>'#',
+                'link'=>route('admin.news.index'),
                 'title'=>'Новости',
                 'icon'=>'far fa-newspaper'
                 ],

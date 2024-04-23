@@ -20,8 +20,10 @@ class SettingsController extends Controller
     {
         $offer_rules=$this->settingsService->get_by_title('offer_rules');
         $traffic_sources=$this->settingsService->get_by_title('traffic_sources');
+        $allowed_traffic_sources=$this->settingsService->get_by_title('allowed_traffic_sources');
+        $prohibited_traffic_sources=$this->settingsService->get_by_title('prohibited_traffic_sources');
 
-        return view('pages.admin.settings.index', compact(['offer_rules', 'traffic_sources']));
+        return view('pages.admin.settings.index', compact(['offer_rules', 'traffic_sources', 'allowed_traffic_sources', 'prohibited_traffic_sources']));
     }
 
     public function save(Request $request)
