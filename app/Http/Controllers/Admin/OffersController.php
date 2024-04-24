@@ -37,6 +37,7 @@ class OffersController extends Controller
         $data=\request()->all();
         unset($data['_token']);
         unset($data['_method']);
+        unset($data['files']);
         Offer::create($data);
 
         return redirect()->route('admin.offers.index');
@@ -46,6 +47,7 @@ class OffersController extends Controller
     {
         $data=\request()->all();
         unset($data['_token']);
+        unset($data['files']);
         $offer->update($data);
 
         return redirect()->route('admin.offers.show',$offer->id);
