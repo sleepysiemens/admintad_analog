@@ -41,7 +41,7 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class
     Route::patch('/offer/{offer}/update','App\Http\Controllers\Admin\OffersController@update')->name('admin.offers.update');
     Route::delete('/offer/{offer}/delete','App\Http\Controllers\Admin\OffersController@delete')->name('admin.offers.delete');
     Route::get('/offers/create','App\Http\Controllers\Admin\OffersController@create')->name('admin.offers.create');
-    Route::post('/offers/store','App\Http\Controllers\Admin\OffersController@store')->name('admin.offers.store');
+    Route::put('/offers/store','App\Http\Controllers\Admin\OffersController@store')->name('admin.offers.store');
 
     //STAT
     Route::get('/stats','App\Http\Controllers\Admin\StatController@index')->name('admin.offers.stats');
