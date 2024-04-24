@@ -1,6 +1,8 @@
 <div class="h-100 ps-4">
     <div class="custom-navbar bg-white bg-light d-flex">
-        <a class="navbar-brand m-auto pt-3" href="{{route('landing.index')}}">{{env('APP_NAME')}}<span>.</span></a>
+        <a class="navbar-brand bm-3" href="{{route('landing.index')}}">
+            <img class="w-100" src="{{asset('img/IMG_5771.PNG')}}">
+        </a>
     </div>
 
     <div class="list-group mt-5">

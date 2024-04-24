@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <div class="rounded p-3" style="background-color: white;">
                                 <h1 class="text-left" style="font-size: 24px; font-weight: bold; color: black;">Описание оффера</h1>
-                                <p style="font-size: 16px; color: black;">{{ $offer->description }}</p>
+                                <p style="font-size: 16px; color: black;">{!! $offer->description !!}</p>
 
                             </div>
                         </div>

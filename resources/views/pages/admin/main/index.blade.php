@@ -32,46 +32,7 @@
                 </div>
             </div>
 
-            <div class="card mt-5 border-0 shadow" style="border-radius: 10px">
-                <div class="card-header py-4 mx-2 bg-transparent">
-                    <div class="row justify-content-between">
-                        <h2 class="fw-bold col-6 my-auto">{{__('Новости')}}</h2>
-                        <div class="col-6 row justify-content-end">
-                            <div class="col-auto">
-                                <button class="btn btn-primary bg-primary text-uppercase fs-4 py-2">
-                                    {{__('Все')}}
-                                </button>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-primary text-uppercase fs-4 py-2">
-                                    {{__('По моим офферам')}}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body mx-2 py-4">
-                    <div class="scroll" style="height: 450px;">
-                        @foreach([1,2,3] as $post)
-                            <div class="border-bottom py-3">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <div class="w-100 rounded bg-warning d-flex" style="height: 100px">
-                                            <i class="far fa-newspaper m-auto fa-2x text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-10">
-                                        <h4>Заголовок</h4>
-                                        <p class="news-text mt-4 m-auto">
-                                            Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+            <livewire:DashboardNews/>
         </div>
 
         {{--SECOND HALF--}}

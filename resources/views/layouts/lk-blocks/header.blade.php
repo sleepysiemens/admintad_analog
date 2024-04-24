@@ -1,32 +1,39 @@
-<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark">
-
-    <div class="container">
-        <a class="navbar-brand" href="{{route('landing.index')}}">{{env('APP_NAME')}}<span>.</span></a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsFurni">
-            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                <li class="nav-item active"><a class="nav-link" href="{{route('landing.index')}}">{{__('Главная')}}</a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}">{{__('Офферы')}}</a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}">{{__('О нас')}}</a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}">{{__('Вебмастеру')}}</a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}">{{__('Рекламодателю')}}</a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}">{{__('Блог')}}</a></li>
-            </ul>
-
-            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li>
-                    @if(auth()->user()==null)
-                        <a class="nav-link" href="{{route('login')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                    @else
-                        <a class="nav-link d-flex" href="@if(auth()->user()->is_admin) {{route('admin.main.index')}} @else {{route('user.main.index')}} @endif "><i class="fas fa-user-circle fa-2x"></i></a>
-                    @endif
-                </li>
-            </ul>
-        </div>
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-light bg-white m-0 py-3">
+    <div class="row justify-content-end w-75 px-5 ms-auto">
+        @if(auth()->user()==null)
+            <div class="col-1">
+                <a class="nav-link" href="{{route('login')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+            </div>
+        @else
+            <div class="col-2">
+                <div class="card bg-light-green border-green rounded-pill">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3 pe-1 d-flex">
+                                <i class="fas fa-wallet fa-2x m-auto text-green"></i>
+                            </div>
+                            <div class="col-9">
+                                <p class="m-0">{{__('Баланс:')}} 0 ₽</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="card bg-light-blue border-light-blue rounded-pill">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3 d-flex">
+                                <i class="bg-white fas fa-user-circle fa-2x m-auto overflow-hidden text-blue"></i>
+                            </div>
+                            <div class="col-9">
+                                <p class="m-0">{{auth()->user()->name}} (ID: {{auth()->user()->id}})</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 
 </nav>

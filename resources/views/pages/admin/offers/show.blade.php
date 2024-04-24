@@ -32,7 +32,7 @@
                 {{$offer->title}}
             </h4>
             <p>
-                {{$offer->description}}
+                {!! $offer->description !!}
             </p>
             <h5 class="mb-4">
                 {{__('Правила офферов')}}

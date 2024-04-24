@@ -32,11 +32,6 @@
                 'title'=>'Настройки',
                 'icon'=>'fas fa-cog'
                 ],
-                [
-                'link'=>route('logout.get'),
-                'title'=>'Выйти',
-                'icon'=>'fas fa-sign-out-alt'
-                ],
             ];
     @endphp
     @include('layouts.lk-blocks.sidebar')

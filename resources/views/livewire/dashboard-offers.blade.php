@@ -4,12 +4,12 @@
             <h2 class="fw-bold col-5 my-auto">{{__('Офферы')}}</h2>
             <div class="col-7 row justify-content-end">
                 <div class="col-auto">
-                    <button wire:click="show_new" class="btn btn-primary @if($new) bg-primary @endif text-uppercase fs-4 py-2">
+                    <button wire:click="change_show" class="btn btn-primary @if(!$show_recomended) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('Новые')}}
                     </button>
                 </div>
                 <div class="col-auto">
-                    <button wire:click="show_recomended" class="btn btn-primary @if($recomended) bg-primary @endif text-uppercase fs-4 py-2">
+                    <button wire:click="change_show" class="btn btn-primary @if($show_recomended) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('Рекомендуемые')}}
                     </button>
                 </div>
@@ -22,12 +22,12 @@
                 <div class="border-bottom py-3">
                     <a class="row text-decoration-none" href="@if(auth()->user()->is_admin) {{route('admin.offers.show',$offer->id)}} @else {{route('user.offers.show',$offer->id)}} @endif">
                         <div class="col-2">
-                            <img src="{{$offer->image}}"  class="w-100 rounded d-flex" style="height: 100px; border-radius: 5px">
+                            <img src="{{$offer->image}}" style="object-fit: cover"  class="w-100 rounded d-flex" style="height: 100px; border-radius: 5px">
                         </div>
                         <div class="col-9">
                             <h4>{{$offer->title}}</h4>
                             <p class="news-text mt-4 m-auto">
-                                {{$offer->description}}
+                                {!! $offer->description !!}
                             </p>
                         </div>
                     </a>

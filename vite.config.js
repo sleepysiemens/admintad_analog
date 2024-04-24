@@ -9,11 +9,9 @@ export default defineConfig({
                 'resources/js/app.js',
 
                 'resources/css/bootstrap.min.css',
-                'resources/css/tiny-slider.css',
                 'resources/css/style.css',
 
                 'resources/js/bootstrap.bundle.min.js',
-                'resources/js/tiny-slider.js',
                 'resources/js/custom.js',
 
             ],

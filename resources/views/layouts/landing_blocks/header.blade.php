@@ -1,7 +1,9 @@
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark">
 
     <div class="container">
-        <a class="navbar-brand" href="{{route('landing.index')}}">{{env('APP_NAME')}}<span>.</span></a>
+        <a class="navbar-brand" href="{{route('landing.index')}}">
+            <img style="height: 50px;" src="{{asset('img/IMG_5771.PNG')}}">
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -28,7 +28,7 @@
                                 <h4 style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;" class="text-black">{{$offer->title}}</h4>
 
                                 <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    {{$offer->description}}
+                                    {!! $offer->description !!}
                                 </p>
                                 <div class="row justify-content-between">
                                     <p class="col-6 my-auto">ID: {{$offer->id}}</p>
