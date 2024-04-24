@@ -3,7 +3,7 @@
         <div class="row justify-content-between">
             <div class="col-lg-5 d-flex">
                 <div class="intro-excerpt m-auto pb-5">
-                    <h2 style="color: white;">CPA сеть для стратегического роста и повышения прибыли !</h2>
+                <h2 style="color: white; font-weight: bold;">CPA сеть для стратегического роста и повышения прибыли</h2>
                     <p class="mb-4 fs-6" style="color: #F0FFFF;">
                         Поделитесь персональной ссылкой в соцсетях, на сайте или в блоге и получайте высокие выплаты с каждой продажи.
                     </p>

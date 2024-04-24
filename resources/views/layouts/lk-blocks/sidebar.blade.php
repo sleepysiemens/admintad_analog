@@ -16,3 +16,48 @@
             </a>
     </div>
 </div>
+
+<style>
+.list-group-item {
+    background-color: #ffffff;
+    color: #f4f7fe;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.list-group-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 100%;
+    transition: width 0.4s ease-in-out;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.list-group-item:hover::before {
+    width: 100%;
+}
+
+
+.list-group-item span {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 15px;
+    z-index: 1;
+}
+
+.list-group-item-action:focus,
+.list-group-item-action:hover {
+    background-color: #f4f7fe;
+    border-color: transparent;
+}
+
+</style>
