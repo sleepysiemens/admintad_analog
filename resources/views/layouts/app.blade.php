@@ -22,9 +22,7 @@
     @vite([
     'resources/css/bootstrap.min.css',
     'resources/css/style.css',
-    'resources/css/tiny-slider.css',
     'resources/js/bootstrap.bundle.min.js',
-    'resources/js/tiny-slider.js',
     'resources/js/custom.js',
     ])
     <title>{{env('APP_NAME')}}</title>
