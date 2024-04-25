@@ -1,6 +1,6 @@
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark">
 
-    <div class="container">
+    <div class="container mt-0">
         <a class="navbar-brand" href="{{route('landing.index')}}">
             <img style="height: 50px;" src="{{asset('img/IMG_5771.PNG')}}">
         </a>
