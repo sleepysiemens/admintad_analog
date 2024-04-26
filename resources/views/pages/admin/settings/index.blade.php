@@ -20,22 +20,6 @@
             <textarea class="form-control fs-4" rows="10" name="text[traffic_sources]">@if($traffic_sources!=null){{$traffic_sources->text}}@endif</textarea>
         </div>
 
-
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group mt-4">
-                    <label>{{__('Разрешенные сточники трафика')}}</label>
-                    <textarea class="form-control fs-4" rows="10" name="text[allowed_traffic_sources]">@if($allowed_traffic_sources!=null){{$allowed_traffic_sources->text}}@endif</textarea>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group mt-4">
-                    <label>{{__('Запрещенные сточники трафика')}}</label>
-                    <textarea class="form-control fs-4" rows="10" name="text[prohibited_traffic_sources]">@if($prohibited_traffic_sources!=null){{$prohibited_traffic_sources->text}}@endif</textarea>
-                </div>
-            </div>
-        </div>
-
         <div class="form-group mt-4">
             <button type="submit" class="btn btn-primary bg-primary fs-4">{{__('Сохранить')}}</button>
         </div>

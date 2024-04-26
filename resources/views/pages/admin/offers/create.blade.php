@@ -42,6 +42,22 @@
                         <label>{{__('Ссылка')}}</label>
                         <input type="text" class="form-control fs-4" name="link" placeholder="{{__('Ссылка')}}" required>
                     </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mt-4">
+                                <label>{{__('Разрешенные сточники трафика')}}</label>
+                                <textarea class="form-control fs-4" rows="10" name="allowed_sources"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mt-4">
+                                <label>{{__('Запрещенные сточники трафика')}}</label>
+                                <textarea class="form-control fs-4" rows="10" name="prohibited_sources"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-6 row">
                             <div class="form-group mt-3 col-4">
@@ -59,7 +75,7 @@
                         </div>
                         <div class="col-6 d-flex">
                             <div class="form-group mt-auto mb-4 w-100">
-                                <button type="submit" class="btn btn-primary bg-primary py-4 w-100 fs-4 ">{{__('Добавить')}}</button>
+                                <button type="submit" class="btn btn-primary bg-primary py-4 w-100 fs-4  mt-0">{{__('Добавить')}}</button>
                             </div>
                         </div>
                     </div>

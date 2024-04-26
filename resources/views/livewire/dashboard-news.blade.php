@@ -4,12 +4,12 @@
             <h2 class="fw-bold col-6 my-auto">{{__('Новости')}}</h2>
             <div class="col-6 row justify-content-end">
                 <div class="col-auto">
-                    <button wire:click="change_show" class="btn btn-primary @if(!$show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
+                    <button wire:click="change_show(false)" class="btn btn-primary @if(!$show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('Все')}}
                     </button>
                 </div>
                 <div class="col-auto">
-                    <button wire:click="change_show" class="btn btn-primary @if($show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
+                    <button wire:click="change_show(true)" class="btn btn-primary @if($show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('По моим офферам')}}
                     </button>
                 </div>
@@ -31,6 +31,9 @@
                             <p class="news-text mt-4 m-auto">
                                 {!! $post->description !!}
                             </p>
+                            <div class="d-flex w-100 justify-content-end">
+                                <a @if(auth()->user()->is_admin) href="{{route('admin.offers.show', $post->offer_id)}}" @else href="{{route('user.offers.show', $post->offer_id)}}" @endif class="btn btn-primary mt-0 me-2">{{__('К офферу')}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>

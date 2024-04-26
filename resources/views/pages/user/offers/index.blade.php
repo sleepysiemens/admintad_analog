@@ -24,13 +24,13 @@
                             <div class="col-8">
                                 <h4 style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;" class="text-black">{{$offer->title}}</h4>
 
-                                <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                <div class="mb-4" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; height: 85px">
                                     {!! $offer->description !!}
-                                </p>
+                                </div>
                                 <div class="row justify-content-between">
-                                    <p class="col-6 my-auto">ID: {{$offer->id}}</p>
-                                    <div class="col-6">
-                                        <a href="{{ route('user.offers.show', $offer->id) }}" class="btn btn-sm btn-custom fs-5">
+                                    <p class="col-5 my-auto">ID: {{$offer->id}}</p>
+                                    <div class="col-7">
+                                        <a href="{{ route('user.offers.show', $offer->id) }}" class="btn btn-sm btn-primary fs-5 mt-0">
                                             {{__('Подробнее')}}
                                         </a>
                                     </div>
@@ -59,21 +59,4 @@
         @endforeach
     </div>
 
-    <style>
-        .btn-custom {
-            background-color: white;
-            color: #1E90FF;
-            border-color: #1E90FF;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .btn-custom:hover {
-            background-color: #1E90FF !important;
-            color: white !important;
-        }
-        /* Add style for spans within paragraphs */
-        .card-body p span {
-            display: inline-block; /* Display spans inline */
-            margin-left: 5px; /* Add margin between description and value */
-        }
-    </style>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content;
+use App\Models\NewsPost;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,9 @@ class OffersController extends Controller
 
     public function show(Offer $offer)
     {
+        $traffic_sources=Content::query()->where('title','=','Источники трафика')->first();
         $offer_rules=Content::query()->where('title','=','Правила офферов')->first();
-        return view('pages.admin.offers.show', compact(['offer', 'offer_rules']));
+        return view('pages.admin.offers.show', compact(['offer', 'offer_rules', 'traffic_sources']));
     }
 
     public function edit(Offer $offer)
@@ -55,6 +57,12 @@ class OffersController extends Controller
 
     public function delete(Offer $offer)
     {
+        $news = NewsPost::query()->where('offer_id',$offer->id)->get();
+
+        foreach ($news as $post) {
+            $post->delete();
+        }
+
         $offer->delete();
         return redirect()->route('admin.offers.index');
     }

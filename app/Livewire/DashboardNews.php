@@ -9,9 +9,9 @@ class DashboardNews extends Component
 {
     public $show_personal=false;
 
-    public function change_show()
+    public function change_show($value)
     {
-        $this->show_personal=!$this->show_personal;
+        $this->show_personal = $value;
     }
 
     public function render()

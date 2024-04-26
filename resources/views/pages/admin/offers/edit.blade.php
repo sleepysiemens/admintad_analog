@@ -3,7 +3,8 @@
 
 @section('content')
     <a href="{{route('admin.offers.index')}}">{{__('Назад')}}</a>
-    <form method="post" action="{{route('admin.offers.store')}}">
+    <form method="post" action="{{route('admin.offers.update', $offer->id)}}">
+        @method('patch')
         @csrf
         <div class="container">
             <div class="row justify-content-center">
@@ -41,6 +42,22 @@
                         <label>{{__('Ссылка')}}</label>
                         <input type="text" class="form-control fs-4" name="link" placeholder="{{__('Ссылка')}}" required value="{{$offer->link}}">
                     </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mt-4">
+                                <label>{{__('Разрешенные сточники трафика')}}</label>
+                                <textarea class="form-control fs-4" rows="10" name="allowed_sources"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mt-4">
+                                <label>{{__('Запрещенные сточники трафика')}}</label>
+                                <textarea class="form-control fs-4" rows="10" name="prohibited_sources"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-6 row">
                             <div class="form-group mt-3 col-4">

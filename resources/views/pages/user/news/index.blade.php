@@ -47,9 +47,8 @@
                                 {!! $post->description !!}
                             </p>
                             <div class="row justify-content-end">
-
                                 <div class="d-flex justify-content-end col-auto">
-                                    <a href="{{route('admin.offers.show',$post->id)}}" class="btn btn-primary my-4 fs-4 me-5">{{__('Перейти к офферу')}}</a>
+                                    <a href="{{route('user.offers.show',$post->offer_id)}}" class="btn btn-primary my-4 fs-4 me-5">{{__('Перейти к офферу')}}</a>
                                 </div>
                             </div>
                         </div>
