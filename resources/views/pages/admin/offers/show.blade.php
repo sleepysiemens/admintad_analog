@@ -65,6 +65,7 @@
     </div>
 
     <div class="row mt-3">
+        {{--
         <div class="col-4">
             <div class="card h-100 shadow overflow-hidden border-0 mt-4" style="border-radius: 15px">
                 <div class="card-body p-5">
@@ -82,8 +83,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-4">
+        --}}
+        <div class="col-6">
             <div class="card h-100 shadow overflow-hidden border-0 mt-4" style="border-radius: 15px">
                 <div class="card-body p-5">
                     <h1 style="font-size: 24px; font-weight: bold; color: black;">{{__('Разрешенные источники')}}</h1>
@@ -101,7 +102,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-6">
             <div class="card h-100 shadow overflow-hidden border-0 mt-4" style="border-radius: 15px">
                 <div class="card-body p-5">
                     <h1 style="font-size: 24px; font-weight: bold; color: black;">{{__('Запрещенные источники')}}</h1>
@@ -122,7 +123,7 @@
 
     <div class="row mt-3">
         <div class="col-md-12">
-                <div class="card shadow overflow-hidden border-0 position-relative" style="border-radius: 15px">
+                <div class="card shadow overflow-hidden border-0 position-relative mt-5" style="border-radius: 15px">
                     <div class="card-body w-100">
                         <p class="my-auto mx-2">{{$offer->link}}</p>
                     </div>

@@ -50,6 +50,7 @@ class OffersController extends Controller
                 'user_id'=>auth()->user()->id,
                 'offer_id'=>$offer->id,
                 'link'=>$link,
+                'sources'=>request('sources'),
             ]
         );
         return redirect()->route('user.offers.show',$offer->id);

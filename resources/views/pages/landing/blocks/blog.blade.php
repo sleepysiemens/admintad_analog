@@ -1,4 +1,4 @@
-<div class="blog-section">
+<div class="blog-section pb-0">
     <div class="wave"></div>
     <div class="container">
         <div class="row mb-5">
@@ -11,7 +11,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                 <div class="post-entry">
-                    <a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
+                    <a href="#" class="post-thumbnail"><img src="{{asset('images/post-1.jpg')}}" alt="Image" class="img-fluid"></a>
                     <div class="post-content-entry">
                         <h2><a href="#" style="font-size: 24px;"><strong>Глубокий анализ статистики</strong></a></h2>
                         <div class="meta">
@@ -23,7 +23,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                 <div class="post-entry">
-                    <a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
+                    <a href="#" class="post-thumbnail"><img src="{{asset('images/post-2.jpg')}}" alt="Image" class="img-fluid"></a>
                     <div class="post-content-entry">
                         <h2><a href="#" style="font-size: 24px;"><strong>Аналитика аудитории</strong></a></h2>
                         <div class="meta">
@@ -35,7 +35,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                 <div class="post-entry">
-                    <a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
+                    <a href="#" class="post-thumbnail"><img src="{{asset('images/post-3.jpg')}}" alt="Image" class="img-fluid"></a>
                     <div class="post-content-entry">
                         <h2><a href="#" style="font-size: 24px;"><strong>Вывод средств</strong></a></h2>
                         <div class="meta">
@@ -49,26 +49,59 @@
     </div>
 </div>
 
-<div style="position: relative; max-width: 50%; margin: auto;">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{asset('img/blow.png')}}'); background-size: cover; background-position: center; z-index: 1;"></div>
-    <img src="{{asset('img/racket.png')}}" class="svg-shadow animated-image racket-img" style="max-width: 50%; height: auto; display: block; position: relative; z-index: 2;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 3;">
-        <h2><a style="font-size: 24px;"><strong>Чтобы выбрать оффер и начать, нужно просто зарегистрироваться. Мы не требуем проходить собеседований.</strong></a></h2>
-        <button onclick="window.open('register', '_blank')" style="font-family: 'Times New Roman', Times, serif; font-size: 20px; font-weight: bold; color: #fff; background: linear-gradient(to right, #87CEFA, #9370DB, #87CEFA); border: none; padding: 15px 30px; cursor: pointer; border-radius: 10px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s, box-shadow 0.3s;">
+<div class="container pb-5">
+    <img src="{{asset('img/racket.png')}}" class="racket-img" alt="Теннисная ракетка">
+    <div class="text">
+        <h2><a style="font-size: 20px; color: black;"><strong>Чтобы выбрать оффер и начать, нужно просто зарегистрироваться.</strong></a></h2>
+        <h2><a style="font-size: 20px; color: black;"><strong>Мы не требуем проходить собеседований.</strong></a></h2>
+
+        <button onclick="window.open('register', '_blank')">
             Быстрая регистрация
         </button>
     </div>
 </div>
 
+
 <style>
-    .svg-shadow {
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    button {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(to left, #4548a6, #0087ff, #4548a6);
+        border: none;
+        padding: 15px 30px;
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative; /* Добавляем позиционирование */
+        z-index: 1; /* Устанавливаем z-index, чтобы кнопка была выше текста */
     }
+
+    button:hover {
+        background: linear-gradient(to left, #0087ff, #4548a6, #0087ff);
+        transform: translateY(-5px); /* Смещаем кнопку вверх при наведении курсора */
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
+    }
+
     .racket-img {
-        max-width: 50%;
+        max-width: 300px; /* Устанавливаем максимальную ширину изображения */
+        height: auto; /* Позволяет изображению сохранять пропорции */
+        display: block; /* Делаем изображение блочным элементом */
+        margin: auto; /* Центрируем изображение */
+        position: relative; /* Устанавливаем позиционирование */
+        z-index: 2; /* Устанавливаем z-index, чтобы изображение было выше текста */
+    }
+
+    .container {
+        position: relative;
+        text-align: center;
+        margin-top: 50px; /* Добавляем отступ сверху */
+    }
+
+    .text {
+        position: relative;
+        z-index: 1; /* Устанавливаем z-index, чтобы текст был ниже изображения */
     }
 </style>
-
-
-
-

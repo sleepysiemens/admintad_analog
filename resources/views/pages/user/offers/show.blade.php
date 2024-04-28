@@ -1,6 +1,10 @@
 @extends('layouts.user')
 @section('Офферы') active @endsection
 
+@if(isset($offer))
+    <livewire:OverlayForm offer_id="{{$offer->id}}" lazy/>
+@endif
+
 @section('content')
     <a href="{{ route('user.offers.index') }}">{{ __('Назад') }}</a>
     <div class="row mb-3 justify-content-between">
@@ -50,6 +54,7 @@
     </div>
 
     <div class="row mt-3">
+        {{--
         <div class="col-4">
             <div class="card h-100 shadow overflow-hidden border-0 mt-4" style="border-radius: 15px">
                 <div class="card-body p-5">
@@ -67,8 +72,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-4">
+--}}
+        <div class="col-6">
             <div class="card h-100 shadow overflow-hidden border-0 mt-4" style="border-radius: 15px">
                 <div class="card-body p-5">
                     <h1 style="font-size: 24px; font-weight: bold; color: black;">{{__('Разрешенные источники')}}</h1>
@@ -86,7 +91,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-6">
             <div class="card h-100 shadow overflow-hidden border-0 mt-4" style="border-radius: 15px">
                 <div class="card-body p-5">
                     <h1 style="font-size: 24px; font-weight: bold; color: black;">{{__('Запрещенные источники')}}</h1>
@@ -108,9 +113,9 @@
     <div class="row mt-3">
         <div class="col-md-12">
                 @if(!$has_offer)
-                    <a class="btn btn-primary bg-primary w-100 fs-4" href="{{route('user.offers.get_link', $offer->id)}}">{{__('Получить ссылку')}}</a>
+                    <livewire:GetOfferLink offer="{{$offer->id}}" />
                 @else
-                <div class="card shadow overflow-hidden border-0 position-relative" style="border-radius: 15px">
+                <div class="card shadow overflow-hidden border-0 position-relative mt-5" style="border-radius: 15px">
                     <div class="card-body w-100">
                         <p class="my-auto mx-2">{{route('redirector',$personal_link)}}</p>
                     </div>

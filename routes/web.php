@@ -17,7 +17,7 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class]
     //
     Route::get('/offers','App\Http\Controllers\User\OffersController@index')->name('user.offers.index');
     Route::get('/offer/{offer}','App\Http\Controllers\User\OffersController@show')->name('user.offers.show');
-    Route::get('/offer/{offer}/get-link','App\Http\Controllers\User\OffersController@get_link')->name('user.offers.get_link');
+    Route::post('/offer/{offer}/get-link','App\Http\Controllers\User\OffersController@get_link')->name('user.offers.get_link');
     //
     Route::get('/stats','App\Http\Controllers\User\StatController@index')->name('user.stat.index');
 

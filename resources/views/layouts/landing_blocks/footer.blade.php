@@ -4,7 +4,7 @@
         <div class="border-top copyright">
             <div class="row pt-4">
                 <div class="col-lg-6">
-                    <p class="mb-2 text-center text-lg-start">Обновлено &copy;<script>document.write(new Date().getFullYear());</script>. Все права защищены
+                    <p class="mb-2 text-center text-lg-start">Payhouse &copy;<script>document.write(new Date().getFullYear());</script>. Все права защищены
                     </p>
                 </div>
 

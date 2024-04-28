@@ -6,49 +6,55 @@
 
     <div class="row mb-3 justify-content-between">
         <div class="col">
-            <h2>{{__('Новости')}}</h2>
+            <h1>{{__('Новости')}}</h1>
         </div>
     </div>
-@foreach($news as $post)
-    @if(!isset($last_date) or date("m-d",strtotime($post->created_at))!=date("m-d",$last_date))
-        @php $last_date=strtotime($post->created_at) @endphp
+    @foreach($news as $post)
+        @if(!isset($last_date) or date("m-d",strtotime($post->created_at))!=date("m-d",$last_date))
+            @php $last_date=strtotime($post->created_at) @endphp
 
+            <div class="row mt-4">
+                <div class="col-auto">
+                    <div class="bg-light-green" style="font-weight: bold; color: black; border-radius: 10px;">
+                        <div class="card-body px-3">
+                            <i class="far fa-calendar-alt me-1"></i> {{date('d',$last_date)}} {{ \App\Services\DateSerive::get_month(date('m',$last_date)) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="row mt-4">
-            <div class="col-auto">
-                <div class="card rounded-pill bg-light-green border-0 shadow">
-                    <div class="card-body px-4">
-                        <i class="far fa-calendar-alt me-1"></i> {{date('d',$last_date)}} {{ \App\Services\DateSerive::get_month(date('m',$last_date)) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card border-0 shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-1">
-                            <div class="w-100 rounded bg-warning d-flex" style="height: 100px">
-                                <i class="far fa-newspaper m-auto fa-2x text-white" aria-hidden="true"></i>
-                            </div>
-                            <div class="card mt-4 border-0 shadow rounded-pill bg-light-blue">
-                                <div class="card-body d-flex justify-content-center py-1 px-1">
-                                    <i class="far fa-clock my-auto me-2"></i>
-                                    <p class="m-0">
-                                        {{date('H:i',strtotime($post->created_at))}}
-                                    </p>
+            <div class="col-12">
+                <div class="card border-0">
+                    <div class="card-body" style="background-image: url('/img/news.png'); background-size: 70px; background-position: 10px 10px; background-repeat: no-repeat;">
+                        <div class="row mt-3">
+                            <div class="col-1"></div>
+                            <div class="col-10">
+                                <h4>{{$post->title}}</h4>
+                                <p class="news-text mt-4 m-auto" style="-webkit-line-clamp: 4;">
+                                    {!! $post->description !!}
+                                </p>
+                                <div class="row mt-3">
+                                    <div class="col-auto">
+                                        <a href="{{ route('admin.offers.show', $post->id) }}" class="btn btn-primary fs-4" style="color: grey !important; background-color: transparent !important; font-weight: bold; text-decoration: none; margin-left: -32px; margin-top: -10px;">
+                                            <span style="transition: color 0.3s; text-decoration: underline; margin-top: 5px;">{{ __('Перейти к оферу') }}</span>
+                                        </a>
+
+                                        <style>
+                                            a:hover span {
+                                                color: black !important;
+                                            }
+                                        </style>   </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-11">
-                            <h4>{{$post->title}}</h4>
-                            <p class="news-text mt-4 m-auto" style="-webkit-line-clamp: 4;">
-                                {!! $post->description !!}
-                            </p>
-                            <div class="row justify-content-end">
-                                <div class="d-flex justify-content-end col-auto">
-                                    <a href="{{route('user.offers.show',$post->offer_id)}}" class="btn btn-primary my-4 fs-4 me-5">{{__('Перейти к офферу')}}</a>
+                            <div class="col-auto rounded" style="margin-left: -1330px; margin-top: 60px;">
+                                <div class="card mt-4 border-0 bg-light-blue">
+                                    <div class="card-body d-flex align-items-center py-1 px-3">
+                                        <i class="far fa-clock me-2"></i>
+                                        <p class="m-0 font-weight-bold" style="font-weight: bold;">
+                                            {{ date('H:i', strtotime($post->created_at)) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
-@endforeach
+    @endforeach
 
 @endsection

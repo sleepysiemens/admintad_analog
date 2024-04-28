@@ -36,6 +36,7 @@
     'resources/js/custom.js',
     ])
     <title>{{env('APP_NAME')}}</title>
+    @livewireStyles
 </head>
 
 <body class="bg-white">
@@ -54,7 +55,7 @@
     </div>
 </div>
 
-
+@livewireScripts
 </body>
 
 </html>

@@ -21,6 +21,7 @@ class DashboardNews extends Component
                 ->join('user_offers','user_offers.offer_id','news_posts.offer_id')
                 ->where('user_offers.user_id','=',auth()->user()->id)
                 ->select('news_posts.*')
+                ->orderBy('news_posts.created_at', 'desc')
                 ->limit(10)
                 ->get();
         }else{
