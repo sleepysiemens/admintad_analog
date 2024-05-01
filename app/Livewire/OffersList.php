@@ -130,6 +130,20 @@ class OffersList extends Component
             }
         }
 
+        $countries = Offer::all()->unique('country')->pluck('country');
+        $allowed_sources = [];
+
+        foreach (Offer::all() as $offer) {
+            foreach(explode("\n", $offer->allowed_sources) as $line){
+                if(!in_array($line, $allowed_sources)){
+                    $allowed_sources[] = str_replace("\n", "", str_replace("\r", "", $line));
+                }
+            }
+        }
+
+        if(!isset($offers))
+            $offers = $results;
+
         if(!$this->source == []){
             $j = 0;
             foreach ($this->source as $source)
@@ -139,17 +153,6 @@ class OffersList extends Component
                     $offers = $offers->where('allowed_sources', 'like', '%'.$source.'%');
                 }else{
                     $offers = $offers->orWhere('allowed_sources', 'like', '%'.$source.'%');
-                }
-            }
-        }
-
-        $countries = Offer::all()->unique('country')->pluck('country');
-        $allowed_sources = [];
-
-        foreach (Offer::all() as $offer) {
-            foreach(explode("\n", $offer->allowed_sources) as $line){
-                if(!in_array($line, $allowed_sources)){
-                    $allowed_sources[] = str_replace("\n", "", str_replace("\r", "", $line));
                 }
             }
         }
