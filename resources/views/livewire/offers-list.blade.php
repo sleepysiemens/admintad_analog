@@ -41,9 +41,9 @@
                     {{--@include('livewire.partials.cost-filter')--}}
                     @include('livewire.partials.source-filter')
                     <div class="col-auto">
-                        <button class="btn btn-primary bg-primary mt-0 fs-5" type="button" wire:click="filter('reset','reset')">
+                        <a href="@if(auth()->user()->is_admin) {{route('admin.offers.index')}} @else {{route('user.offers.index')}} @endif" class="btn btn-primary bg-primary mt-0 fs-5">
                             {{__('Сбросить фильтр')}}
-                        </button>
+                        </a>
                     </div>
 
                 </div>

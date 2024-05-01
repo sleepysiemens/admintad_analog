@@ -100,15 +100,6 @@ class OffersList extends Component
                     unset($this->source[array_search($value, $this->source)]);
                 }
                 break;
-
-            case 'reset':
-                $this->price_from = 0;
-                $this->price_to = 1000;
-                $this->cost_from = 0;
-                $this->cost_to = 1000;
-                $this->country = [];
-                $this->source = [];
-                break;
         }
     }
 
@@ -121,8 +112,7 @@ class OffersList extends Component
                 ->where('price','<=',$this->price_to)
                 ->where('cost','>=',$this->cost_from)
                 ->where('cost','<=',$this->cost_to)
-                ->orderBy('created_at', 'desc')
-                ->get();
+                ->orderBy('created_at', 'desc');
         }else{
             foreach ($this->country as $country) {
                 $results = Offer::query()
@@ -132,8 +122,7 @@ class OffersList extends Component
                     ->where('cost','>=',$this->cost_from)
                     ->where('cost','<=',$this->cost_to)
                     ->where('country','like', '%' . $country . '%')
-                    ->orderBy('created_at', 'desc')
-                    ->get()->all();
+                    ->orderBy('created_at', 'desc');
 
                 foreach ($results as $result){
                     $offers[] = $result;
@@ -142,13 +131,14 @@ class OffersList extends Component
         }
 
         if(!$this->source == []){
-            foreach ($this->source as $source) {
-                $j = 0;
-                foreach ($offers as $offer){
-                    if(!str_contains($source,$offer->allowed_sources)){
-                        unset($offers[$j]);
-                    }
-                    $j++;
+            $j = 0;
+            foreach ($this->source as $source)
+            {
+                $j++;
+                if($j == 1){
+                    $offers = $offers->where('allowed_sources', 'like', '%'.$source.'%');
+                }else{
+                    $offers = $offers->orWhere('allowed_sources', 'like', '%'.$source.'%');
                 }
             }
         }
@@ -159,10 +149,12 @@ class OffersList extends Component
         foreach (Offer::all() as $offer) {
             foreach(explode("\n", $offer->allowed_sources) as $line){
                 if(!in_array($line, $allowed_sources)){
-                    $allowed_sources[] = $line;
+                    $allowed_sources[] = str_replace("\n", "", str_replace("\r", "", $line));
                 }
             }
         }
+
+        $offers = $offers->get();
 
         return view('livewire.offers-list', compact(['offers', 'countries', 'allowed_sources']));
     }
