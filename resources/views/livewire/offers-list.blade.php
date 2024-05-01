@@ -87,12 +87,12 @@
                                 <p class="text-black m-0">{{$offer->country}}</p>
                             </div>
                             <div class="col-4">
-                                <p class="m-0">{{__('Стоимость')}}</p>
-                                <p class="text-black m-0">{{$offer->cost}}</p>
+                                <p class="m-0">{{__('Отчисления')}}</p>
+                                <p class="text-black m-0">{{$offer->cost}} ₽</p>
 
                             </div>
                             <div class="col-4">
-                                <p class="m-0">{{__('Отчисления')}}</p>
+                                <p class="m-0">{{__('Стоимость')}}</p>
                                 <p class="text-black m-0" style="font-weight: 500">{{$offer->price}} ₽</p>
                             </div>
                         </div>
