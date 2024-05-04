@@ -1,6 +1,7 @@
 @php
     if(auth()->user()->is_admin) $extends = 'layouts.admin'; else $extends = 'layouts.user';
 @endphp
+@extends($extends)
 
 @section('Профиль') active @endsection
 
