@@ -8,8 +8,11 @@
     <div class="list-group mt-5">
 
         @foreach($navs as $nav)
-            <a href="{{$nav['link']}}" class="list-group-item list-group-item-action border-0 fs-3 py-3 mx-auto rounded @yield($nav['title'])">
+            <a href="{{$nav['link']}}" class="list-group-item list-group-item-action border-0 fs-3 py-3 mx-auto rounded position-relative @yield($nav['title'])">
                 <i class="{{$nav['icon']}} me-3"></i><span>{{$nav['title']}}</span>
+                @if($nav['title'] == 'Уведомления')
+                    <livewire:notifications-count/>
+                @endif
             </a>
         @endforeach
 

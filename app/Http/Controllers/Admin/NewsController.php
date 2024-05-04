@@ -11,12 +11,12 @@ class NewsController extends Controller
     public function index()
     {
         $news=NewsPost::query()->orderBy('created_at','desc')->get();
-        return view('pages.admin.news.index', compact('news'));
+        return view('pages.dashboard.news.index', compact('news'));
     }
 
     public function create()
     {
-        return view('pages.admin.news.create');
+        return view('pages.dashboard.news.create');
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class NewsController extends Controller
 
     public function edit(NewsPost $news)
     {
-        return view('pages.admin.news.edit', compact('news'));
+        return view('pages.dashboard.news.edit', compact('news'));
     }
 
     public function update(Request $request, NewsPost $news)

@@ -4,12 +4,12 @@
             <h2 class="fw-bold col-6 my-auto">{{__('Новости')}}</h2>
             <div class="col-6 row justify-content-end">
                 <div class="col-auto">
-                    <button wire:click="change_show" class="btn btn-primary @if(!$show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
+                    <button wire:click="change_show(false)" class="btn btn-primary @if(!$show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('Все')}}
                     </button>
                 </div>
                 <div class="col-auto">
-                    <button wire:click="change_show" class="btn btn-primary @if($show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
+                    <button wire:click="change_show(true)" class="btn btn-primary @if($show_personal) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('По моим офферам')}}
                     </button>
                 </div>
@@ -34,12 +34,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-10">
+                        <a href="@if(auth()->user()->is_admin) {{route('admin.offers.show', $post->offer_id)}} @else {{route('user.offers.show', $post->offer_id)}} @endif" class="col-10 text-decoration-none">
                             <h4>{{$post->title}}</h4>
                             <p class="news-text mt-2">
                                 {!! $post->description !!}
                             </p>
-                        </div>
+                        </a>
                     </div>
                 </div>
             @endforeach

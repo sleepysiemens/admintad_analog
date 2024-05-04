@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('main') active @endsection
+
 @section('content')
     @include('pages.landing.blocks.hero')
     @include('pages.landing.blocks.why-choose')

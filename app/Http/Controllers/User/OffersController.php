@@ -14,7 +14,7 @@ class OffersController extends Controller
     {
         $offers=Offer::all();
 
-        return view('pages.user.offers.index', compact(['offers']));
+        return view('pages.dashboard.offers.index', compact(['offers']));
     }
 
     public function show(Offer $offer)
@@ -37,7 +37,7 @@ class OffersController extends Controller
             $personal_link=$personal_offer->link;
         }
 
-        return view('pages.user.offers.show', compact(['offer', 'has_offer', 'personal_link', 'offer_rules', 'traffic_sources']));
+        return view('pages.dashboard.offers.show', compact(['offer', 'has_offer', 'personal_link', 'offer_rules', 'traffic_sources']));
     }
 
     public function get_link(Offer $offer)
@@ -51,6 +51,7 @@ class OffersController extends Controller
                 'offer_id'=>$offer->id,
                 'link'=>$link,
                 'sources'=>request('sources'),
+                'daily_leads'=>request('daily_leads'),
             ]
         );
         return redirect()->route('user.offers.show',$offer->id);

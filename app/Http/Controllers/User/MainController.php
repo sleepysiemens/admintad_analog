@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('pages.user.main.index');
+        return view('pages.dashboard.main.index');
     }
 }

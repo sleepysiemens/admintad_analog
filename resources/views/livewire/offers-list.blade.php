@@ -37,7 +37,7 @@
                 {{--ФИЛЬТРЫ--}}
                 <div class="row mt-4 @if(!$show_filters) d-none @endif">
                     @include('livewire.partials.country-filter')
-                    @include('livewire.partials.price-filter')
+                    {{--@include('livewire.partials.price-filter')--}}
                     {{--@include('livewire.partials.cost-filter')--}}
                     @include('livewire.partials.source-filter')
                     <div class="col-auto">

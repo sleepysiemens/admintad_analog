@@ -9,23 +9,43 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //LANDING
 Route::get('/','App\Http\Controllers\LandingController@index')->name('landing.index');
+Route::get('/blog','App\Http\Controllers\BlogController@index')->name('blog.index');
+Route::get('/blog/{post}','App\Http\Controllers\BlogController@show')->name('blog.show');
+
 
 
 //USER
-Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class], 'prefix'=>'profile'], function (){
+Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class], 'prefix'=>'webmaster'], function (){
     Route::get('/','App\Http\Controllers\User\MainController@index')->name('user.main.index');
-    //
+
+    //OFFERS
     Route::get('/offers','App\Http\Controllers\User\OffersController@index')->name('user.offers.index');
     Route::get('/offer/{offer}','App\Http\Controllers\User\OffersController@show')->name('user.offers.show');
     Route::post('/offer/{offer}/get-link','App\Http\Controllers\User\OffersController@get_link')->name('user.offers.get_link');
-    //
+
+    //STATS
     Route::get('/stats','App\Http\Controllers\User\StatController@index')->name('user.stat.index');
 
     //NEWS
     Route::get('/news','App\Http\Controllers\User\NewsController@index')->name('user.news.index');
 
+    //SOURCES
+    Route::get('/sources','App\Http\Controllers\User\SourcesController@index')->name('user.sources.index');
+    Route::get('/sources/create','App\Http\Controllers\User\SourcesController@create')->name('user.sources.create');
+    Route::put('/sources/store','App\Http\Controllers\User\SourcesController@store')->name('user.sources.store');
+
+    //PROFILE
+    Route::get('/profile','App\Http\Controllers\User\ProfileController@index')->name('user.profile.index');
+    Route::patch('/profile/update','App\Http\Controllers\User\ProfileController@update')->name('user.profile.update');
+
+    //FAQ
+    Route::get('/faq','App\Http\Controllers\User\FaqController@index')->name('user.faq.index');
+
+    //RULES
+    Route::get('/rules','App\Http\Controllers\User\RulesController@index')->name('user.rules.index');
 
 })->middleware('admin');
+
 
 //ADMIN
 Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class],'prefix'=>'admin'], function (){
@@ -53,6 +73,26 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class
     Route::get('/news/{news}/edit','App\Http\Controllers\Admin\NewsController@edit')->name('admin.news.edit');
     Route::patch('/news/{news}/update','App\Http\Controllers\Admin\NewsController@update')->name('admin.news.update');
 
+    //SOURCES
+    Route::get('/sources','App\Http\Controllers\Admin\SourcesController@index')->name('admin.sources.index');
+    Route::get('/sources/auto','App\Http\Controllers\Admin\SourcesController@auto')->name('admin.sources.auto');
+    Route::put('/sources/store','App\Http\Controllers\Admin\SourcesController@store')->name('admin.sources.store');
+    Route::get('/sources/{source}/delete','App\Http\Controllers\Admin\SourcesController@delete')->name('admin.sources.delete');
+
+    //BLOG
+    Route::get('/blog','App\Http\Controllers\Admin\BlogController@index')->name('admin.blog.index');
+    Route::get('/blog/create','App\Http\Controllers\Admin\BlogController@create')->name('admin.blog.create');
+    Route::put('/blog/store','App\Http\Controllers\Admin\BlogController@store')->name('admin.blog.store');
+    Route::get('/blog/{post}','App\Http\Controllers\Admin\BlogController@show')->name('admin.blog.show');
+
+    //FAQ
+    Route::get('/faq','App\Http\Controllers\Admin\FaqController@index')->name('admin.faq.index');
+    Route::get('/faq/create','App\Http\Controllers\Admin\FaqController@create')->name('admin.faq.create');
+    Route::put('/faq/store','App\Http\Controllers\Admin\FaqController@store')->name('admin.faq.store');
+    Route::get('/faq/delete/{question}','App\Http\Controllers\Admin\FaqController@delete')->name('admin.faq.delete');
+
+    //RULES
+    Route::get('/rules','App\Http\Controllers\Admin\RulesController@index')->name('admin.rules.index');
 
 })->middleware('admin');
 

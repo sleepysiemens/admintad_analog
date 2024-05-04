@@ -21,7 +21,7 @@ class SettingsController extends Controller
         $offer_rules=$this->settingsService->get_by_title('offer_rules');
         $traffic_sources=$this->settingsService->get_by_title('traffic_sources');
 
-        return view('pages.admin.settings.index', compact(['offer_rules', 'traffic_sources']));
+        return view('pages.dashboard.settings.index', compact(['offer_rules', 'traffic_sources']));
     }
 
     public function save(Request $request)

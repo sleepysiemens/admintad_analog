@@ -4,12 +4,12 @@
             <h2 class="fw-bold col-5 my-auto">{{__('Офферы')}}</h2>
             <div class="col-7 row justify-content-end">
                 <div class="col-auto">
-                    <button wire:click="change_show" class="btn btn-primary @if(!$show_recomended) bg-primary @endif text-uppercase fs-5 py-2 m-0">
+                    <button wire:click="change_show(false)" class="btn btn-primary @if(!$show_recomended) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('Новые')}}
                     </button>
                 </div>
                 <div class="col-auto">
-                    <button wire:click="change_show" class="btn btn-primary @if($show_recomended) bg-primary @endif text-uppercase fs-5 py-2 m-0">
+                    <button wire:click="change_show(true)" class="btn btn-primary @if($show_recomended) bg-primary @endif text-uppercase fs-5 py-2 m-0">
                         {{__('Рекомендуемые')}}
                     </button>
                 </div>

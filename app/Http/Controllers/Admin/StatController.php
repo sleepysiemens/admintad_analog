@@ -19,6 +19,6 @@ class StatController extends Controller
             $offer->clicks=$clicks;
         }
 
-        return view('pages.admin.stat.index', compact('offers'));
+        return view('pages.dashboard.stat.index', compact('offers'));
     }
 }

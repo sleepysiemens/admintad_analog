@@ -13,6 +13,11 @@
                 'icon'=>'fas fa-user'
                 ],
                 [
+                'link'=>route('admin.sources.index'),
+                'title'=>'Уведомления',
+                'icon'=>'far fa-bell'
+                ],
+                [
                 'link'=>route('admin.news.index'),
                 'title'=>'Новости',
                 'icon'=>'far fa-newspaper'
@@ -27,10 +32,25 @@
                 'title'=>'Статистика',
                 'icon'=>'fas fa-chart-line'
                 ],
-                 [
+                [
                 'link'=>route('admin.settings.index'),
                 'title'=>'Настройки',
                 'icon'=>'fas fa-cog'
+                ],
+                [
+                'link'=>route('admin.blog.index'),
+                'title'=>'Блог',
+                'icon'=>'fas fa-bullhorn'
+                ],
+                [
+                'link'=>route('admin.faq.index'),
+                'title'=>'FAQ',
+                'icon'=>'far fa-question-circle'
+                ],
+                [
+                'link'=>route('admin.rules.index'),
+                'title'=>'Правила',
+                'icon'=>'fas fa-info'
                 ],
             ];
     @endphp

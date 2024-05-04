@@ -14,24 +14,24 @@ class OffersController extends Controller
     {
         $offers=Offer::all();
 
-        return view('pages.admin.offers.index', compact(['offers']));
+        return view('pages.dashboard.offers.index', compact(['offers']));
     }
 
     public function show(Offer $offer)
     {
         $traffic_sources=Content::query()->where('title','=','Источники трафика')->first();
         $offer_rules=Content::query()->where('title','=','Правила офферов')->first();
-        return view('pages.admin.offers.show', compact(['offer', 'offer_rules', 'traffic_sources']));
+        return view('pages.dashboard.offers.show', compact(['offer', 'offer_rules', 'traffic_sources']));
     }
 
     public function edit(Offer $offer)
     {
-        return view('pages.admin.offers.edit', compact(['offer']));
+        return view('pages.dashboard.offers.edit', compact(['offer']));
     }
 
     public function create()
     {
-        return view('pages.admin.offers.create');
+        return view('pages.dashboard.offers.create');
     }
 
     public function store()

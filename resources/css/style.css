@@ -185,7 +185,6 @@ a {
             border-radius: 30px;
             color: #000000 !important;
             border-color: #ffffff !important;
-            margin-top: 80px; /* Добавляем отступ сверху */
         }
 
   .btn:hover {

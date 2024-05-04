@@ -18,12 +18,12 @@
 
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                <li class="nav-item active"><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Главная')}}</span></a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Офферы')}}</span></a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('О нас')}}</span></a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Вебмастеру')}}</span></a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Рекламодателю')}}</span></a></li>
-                <li><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Блог')}}</span></a></li>
+                <li class="@yield('main')"><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Главная')}}</span></a></li>
+                <li class="@yield('offers')"><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Офферы')}}</span></a></li>
+                <li class="@yield('about')"><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('О нас')}}</span></a></li>
+                <li class="@yield('webmaster')"><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Вебмастеру')}}</span></a></li>
+                <li class="@yield('ad')"><a class="nav-link" href="{{route('landing.index')}}"><span style="color: black;">{{__('Рекламодателю')}}</span></a></li>
+                <li class="@yield('blog')"><a class="nav-link" href="{{route('blog.index')}}"><span style="color: black;">{{__('Блог')}}</span></a></li>
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
