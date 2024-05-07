@@ -1,5 +1,4 @@
 <div>
-
     <div class="row mt-5">
         @foreach($source_cards as $card)
             <div class="col-3">

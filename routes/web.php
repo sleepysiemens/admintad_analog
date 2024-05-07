@@ -44,6 +44,10 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\UserMiddleware::class]
     //RULES
     Route::get('/rules','App\Http\Controllers\User\RulesController@index')->name('user.rules.index');
 
+    //PAYMENT
+    Route::get('/payouts','App\Http\Controllers\User\PayoutsController@index')->name('user.payouts.index');
+    Route::put('/payouts/store','App\Http\Controllers\User\PayoutsController@store')->name('user.payouts.store');
+
 })->middleware('admin');
 
 
@@ -93,6 +97,10 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class
 
     //RULES
     Route::get('/rules','App\Http\Controllers\Admin\RulesController@index')->name('admin.rules.index');
+
+    //TICKETS
+    Route::get('/tickets','App\Http\Controllers\Admin\TicketsController@index')->name('admin.tickets.index');
+
 
 })->middleware('admin');
 

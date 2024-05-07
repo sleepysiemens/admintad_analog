@@ -32,6 +32,11 @@
                 'title'=>'Статистика',
                 'icon'=>'fas fa-chart-line'
                 ],
+                 [
+                'link'=>route('user.payouts.index'),
+                'title'=>'Выплаты',
+                'icon'=>'fas fa-wallet'
+                ],
                 [
                 'link'=>route('user.faq.index'),
                 'title'=>'FAQ',

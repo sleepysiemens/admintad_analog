@@ -52,6 +52,11 @@
                 'title'=>'Правила',
                 'icon'=>'fas fa-info'
                 ],
+                [
+                'link'=>route('admin.tickets.index'),
+                'title'=>'Тикеты',
+                'icon'=>'fas fa-coins'
+                ],
             ];
     @endphp
     @include('layouts.lk-blocks.sidebar')

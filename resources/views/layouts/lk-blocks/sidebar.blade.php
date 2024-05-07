@@ -13,6 +13,10 @@
                 @if($nav['title'] == 'Уведомления')
                     <livewire:notifications-count/>
                 @endif
+
+                @if($nav['title'] == 'Тикеты')
+                    <livewire:tickets-notifications/>
+                @endif
             </a>
         @endforeach
 
