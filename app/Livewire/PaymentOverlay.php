@@ -24,7 +24,7 @@ class PaymentOverlay extends Component
      * @return void
      */
     #[On('open-payment-form')]
-    public function change_visibility($args)
+    public function change_visibility($args = null)
     {
         $this->is_visible = !$this->is_visible;
         if($args !== null) {
