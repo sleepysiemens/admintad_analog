@@ -13,4 +13,5 @@
     </div>
 
     <livewire:statistic-list/>
+
 @endsection
