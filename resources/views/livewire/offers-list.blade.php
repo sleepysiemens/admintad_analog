@@ -5,7 +5,7 @@
         </div>
 
         <div class="col d-flex">
-            @if(auth()->user()->is_admin)
+            @if(auth()->user() != null && auth()->user()->is_admin)
                 <a href="{{route('admin.offers.create')}}" class="btn btn-primary bg-primary my-auto fs-3">{{__('Добавить оффер')}}</a>
             @endif
         </div>
@@ -41,7 +41,7 @@
                     {{--@include('livewire.partials.cost-filter')--}}
                     @include('livewire.partials.source-filter')
                     <div class="col-auto">
-                        <a href="@if(auth()->user()->is_admin) {{route('admin.offers.index')}} @else {{route('user.offers.index')}} @endif" class="btn btn-primary bg-primary mt-0 fs-5">
+                        <a href="@if(auth()->user() != null && auth()->user()->is_admin) {{route('admin.offers.index')}} @else {{route('user.offers.index')}} @endif" class="btn btn-primary bg-primary mt-0 fs-5">
                             {{__('Сбросить фильтр')}}
                         </a>
                     </div>
@@ -73,7 +73,7 @@
                                 <div class="row justify-content-between">
                                     <p class="col-5 my-auto">ID: {{$offer->id}}</p>
                                     <div class="col-7">
-                                        <a href="@if(auth()->user()->is_admin) {{ route('admin.offers.show', $offer->id) }} @else {{ route('user.offers.show', $offer->id) }} @endif" class="btn btn-sm btn-primary fs-5 mt-0">
+                                        <a href="@if(auth()->user() != null) @if(auth()->user()->is_admin) {{ route('admin.offers.show', $offer->id) }} @else {{ route('user.offers.show', $offer->id) }} @endif @else {{ route('offer.show', $offer->id) }} @endif" class="btn btn-sm btn-primary fs-5 mt-0">
                                             {{__('Подробнее')}}
                                         </a>
                                     </div>

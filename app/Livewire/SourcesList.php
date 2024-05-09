@@ -21,7 +21,7 @@ class SourcesList extends Component
                 ['title' => 'На проверке', 'color' => '224, 213, 0', 'count' => UserSource::query()->where('user_id', auth()->user()->id)->where('status','На проверке')->count()],
             ];
 
-            $this->sources = UserSource::query()->where('user_id', auth()->user()->id)->get();
+            $this->sources = UserSource::query()->where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }else{
             $this->source_cards = [
                 ['title' => 'Всего', 'color' => '66, 135, 245', 'count' => UserSource::query()->count()],
@@ -30,7 +30,11 @@ class SourcesList extends Component
                 ['title' => 'На проверке', 'color' => '224, 213, 0', 'count' => UserSource::query()->where('status','На проверке')->count()],
             ];
 
-            $this->sources = UserSource::query()->get();
+            $this->sources = UserSource::query()
+                ->join('users', 'users.id', 'user_sources.user_id')
+                ->select('user_sources.*', 'users.email')
+                ->orderBy('user_sources.created_at', 'desc')
+                ->get();
         }
     }
 

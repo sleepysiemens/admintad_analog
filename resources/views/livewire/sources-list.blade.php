@@ -25,9 +25,14 @@
                 <thead class="bg-light-blue">
                 <tr>
                     <th class="border-end">{{__('ID')}}</th>
+                    @if(auth()->user()->is_admin)
+                        <th class="border-end">{{__('ID мастера')}}</th>
+                        <th class="border-end">{{__('Email')}}</th>
+                    @endif
                     <th class="border-end">{{__('Дата')}}</th>
                     <th class="border-end">{{__('Название')}}</th>
                     <th class="border-end">{{__('Ссылка')}}</th>
+                    <th class="border-end">{{__('Описание')}}</th>
                     <th class="">{{__('Статус')}}</th>
                 </tr>
                 </thead>
@@ -35,9 +40,14 @@
                 @foreach($sources as $source)
                     <tr>
                         <td class="border-end">{{$source->id}}</td>
+                        @if(auth()->user()->is_admin)
+                        <td class="border-end">{{$source->user_id}}</td>
+                        <td class="border-end">{{$source->email}}</td>
+                        @endif
                         <td class="border-end">{{$source->created_at}}</td>
                         <td class="border-end">{{$source->title}}</td>
                         <td class="border-end">{{$source->link}}</td>
+                        <td class="border-end">{{$source->description}}</td>
                         <td>
                             @if(!auth()->user()->is_admin)
                                 {{$source->status}}

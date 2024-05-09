@@ -44,4 +44,19 @@ class BlogController extends Controller
         return view('pages.dashboard.blog.show', compact('post'));
     }
 
+    /**
+     * @param BlogPost $post
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function edit(BlogPost $post)
+    {
+        return view('pages.dashboard.blog.edit', compact('post'));
+    }
+
+    public function update(Request $request, BlogPost $post)
+    {
+        $post->update(['title' => $request->title, 'img' => $request->img, 'description' => $request->description, 'category' => $request->category]);
+        return redirect()->route('admin.blog.index');
+    }
+
 }

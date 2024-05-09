@@ -55,9 +55,15 @@
                                 {!! $post->description !!}
                             </p>
                             <div class="row justify-content-end">
-                                <div class="d-flex justify-content-end col-auto">
-                                    <a href="{{{route('admin.news.edit',$post->id)}}}" class="btn btn-primary bg-primary my-4 fs-4 me-5"><i class="far fa-edit"></i></a>
-                                </div>
+                                @if(auth()->user()->is_admin)
+                                    <div class="d-flex justify-content-end col-auto">
+                                        <a href="{{{route('admin.news.edit',$post->id)}}}" class="btn btn-primary bg-primary my-4 fs-4 "><i class="far fa-edit"></i></a>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end col-auto">
+                                        <a href="{{{route('admin.news.delete',$post->id)}}}" class="btn btn-primary bg-warning my-4 fs-4"><i class="far fa-trash-alt"></i></a>
+                                    </div>
+                                @endif
                                 <div class="d-flex justify-content-end col-auto">
                                     <a href="{{route('admin.offers.show',$post->id)}}" class="btn btn-primary my-4 fs-4 me-5">{{__('Перейти к офферу')}}</a>
                                 </div>

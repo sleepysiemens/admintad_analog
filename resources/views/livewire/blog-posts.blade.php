@@ -1,8 +1,8 @@
 <div>
     <div class="row mt-3 justify-content-between">
-        <h1 class="text-black col-auto">{{__('Блог')}}</h1>
+        <h1 class="text-black col-auto me-auto">{{__('Блог')}}</h1>
 
-        <div class="row col-6 justify-content-end">
+        <div class="row col-6 justify-content-end ms-auto">
             <a wire:click="select_category('')" class="col-auto my-auto text-decoration-none"><h4>{{__('Все')}}</h4></a>
             <a class="col-auto my-auto text-decoration-none"><h4>{{__('Популярные')}}</h4></a>
             <a class="col-auto my-auto text-decoration-none"><h4>{{__('Просматриваемые')}}</h4></a>
@@ -19,21 +19,21 @@
                         <div class="news-text my-3">
                             {!! $post->description !!}
                         </div>
-                        <div class="row justify-content-between">
-                            <div class="col-6 row">
+                        <div class="row justify-content-between w-100">
+                            <div class="col-6 row me-auto">
                                 <div class="col-auto border-end">
                                     {{date("Y.m.d", strtotime($post->created_at))}}
                                 </div>
                                 <div class="col-auto border-end">
                                     <i class="fas fa-star text-warning"></i> {{$post->rating}}
                                 </div>
-                                <div class="col-auto border-end">
+                                <div class="col-auto">
                                     <i class="far fa-eye"></i> {{$post->views}}
                                 </div>
 
                             </div>
                             <div class="col-auto">
-                                <a href="@if(auth()->user()->is_admin) {{route('admin.blog.show', $post->id)}} @else {{route('blog.show', $post->id)}} @endif" class="text-decoration-none fs-6" style="color: #0a53be!important;">{{__('Читать далее')}} <i class="fas fa-arrow-right ms-1"></i></a>
+                                <a href="@if(auth()->user() != null and auth()->user()->is_admin) {{route('admin.blog.show', $post->id)}} @else {{route('blog.show', $post->id)}} @endif" class="text-decoration-none fs-6" style="color: #0a53be!important;">{{__('Читать далее')}} <i class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>

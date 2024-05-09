@@ -47,4 +47,10 @@ class NewsController extends Controller
         $news->update($data);
         return redirect()->route('admin.news.index');
     }
+
+    public function delete(NewsPost $news)
+    {
+        $news->delete();
+        return redirect()->route('admin.news.index');
+    }
 }

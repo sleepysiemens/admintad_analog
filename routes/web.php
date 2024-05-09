@@ -12,6 +12,9 @@ Route::get('/','App\Http\Controllers\LandingController@index')->name('landing.in
 Route::get('/blog','App\Http\Controllers\BlogController@index')->name('blog.index');
 Route::get('/blog/{post}','App\Http\Controllers\BlogController@show')->name('blog.show');
 
+Route::get('/offers','App\Http\Controllers\OfferController@index')->name('offer.index');
+Route::get('/offers/{offer}','App\Http\Controllers\OfferController@show')->name('offer.show');
+
 
 
 //USER
@@ -76,6 +79,7 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class
     Route::put('/news/store','App\Http\Controllers\Admin\NewsController@store')->name('admin.news.store');
     Route::get('/news/{news}/edit','App\Http\Controllers\Admin\NewsController@edit')->name('admin.news.edit');
     Route::patch('/news/{news}/update','App\Http\Controllers\Admin\NewsController@update')->name('admin.news.update');
+    Route::get('/news/{news}/delete','App\Http\Controllers\Admin\NewsController@delete')->name('admin.news.delete');
 
     //SOURCES
     Route::get('/sources','App\Http\Controllers\Admin\SourcesController@index')->name('admin.sources.index');
@@ -88,6 +92,9 @@ Route::group(['middleware'=>['auth', \App\Http\Middleware\AdminMiddleware::class
     Route::get('/blog/create','App\Http\Controllers\Admin\BlogController@create')->name('admin.blog.create');
     Route::put('/blog/store','App\Http\Controllers\Admin\BlogController@store')->name('admin.blog.store');
     Route::get('/blog/{post}','App\Http\Controllers\Admin\BlogController@show')->name('admin.blog.show');
+    Route::get('/blog/edit/{post}','App\Http\Controllers\Admin\BlogController@edit')->name('admin.blog.edit');
+    Route::patch('/blog/update/{post}','App\Http\Controllers\Admin\BlogController@update')->name('admin.blog.update');
+    Route::get('/blog/delete/{post}','App\Http\Controllers\Admin\BlogController@delete')->name('admin.blog.delete');
 
     //FAQ
     Route::get('/faq','App\Http\Controllers\Admin\FaqController@index')->name('admin.faq.index');
