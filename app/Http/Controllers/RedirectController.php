@@ -16,6 +16,7 @@ class RedirectController extends Controller
         $daily_statistic = DailyStatistic::firstOrCreate(['user_offer_id' => $user_offer->offer_id, 'created_at' => date("Y-m-d", strtotime('today'))]);
 
         $redirect_link=Offer::query()->where('id','=',$user_offer->offer_id)->first()->link;
+        $offer_country=Offer::query()->where('id','=',$user_offer->offer_id)->first()->country;
 
         $daily_statistic->hits=$daily_statistic->hits + 1;
 
@@ -35,6 +36,14 @@ class RedirectController extends Controller
         }
 
         //TB
+        $user_ip = getenv('REMOTE_ADDR');
+        $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+        $country = strtolower($geo["geoplugin_countryName"]);
+
+        if(strtolower($offer_country) != ($country)){
+            $daily_statistic->tb = $daily_statistic->tb + 1;
+        }
+
         $daily_statistic->tb = $daily_statistic->hits - $daily_statistic->hosts_count;
 
         //Unique CR
