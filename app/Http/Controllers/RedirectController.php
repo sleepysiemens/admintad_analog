@@ -26,13 +26,13 @@ class RedirectController extends Controller
         {
             $hosts[] = $_SERVER['REMOTE_ADDR'];
             $daily_statistic->hosts = json_encode($hosts);
-            $daily_statistic->hosts_count = $daily_statistic->hosts_count + 1;
+            #$daily_statistic->hosts_count = $daily_statistic->hosts_count + 1;
         }
         elseif (!in_array($_SERVER['REMOTE_ADDR'], $hosts))
         {
             $hosts[] = $_SERVER['REMOTE_ADDR'];
             $daily_statistic->hosts = json_encode($hosts);
-            #$daily_statistic->hosts_count = $daily_statistic->hosts_count + 1;
+            $daily_statistic->hosts_count = $daily_statistic->hosts_count + 1;
         }
 
         //TB
