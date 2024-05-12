@@ -2,16 +2,18 @@
 
 namespace App\Services;
 
+use App\Models\DailyStatistic;
 use App\Models\UserOffer;
 
 class StatisticService
 {
     public function update_statistic($data)
     {
-        $user_offer=UserOffer::query()
+        $user_offer=DailyStatistic::query()
+            ->join('user_offers', 'daily_statistics.user_offer_id', 'user_offers.id')
             ->join('offers','offers.id','=','user_offers.offer_id')
-            ->where('offers.source_offer_id',$data->id_offer)
-            ->where('host','like','%'.$data->ip.'%')
+            ->where('offers.source_offer_id',$data['id_offer'])
+            ->where('hosts','like','%'.$data['ip'].'%')
             ->first();
 
         if($user_offer!=null)
