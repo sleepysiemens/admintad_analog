@@ -3,12 +3,15 @@
 namespace App\Livewire;
 
 use App\Models\Offer;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class OffersList extends Component
 {
     public string $key = '';
+
     public array $country = [];
+
     public array $source = [];
     public int $price_from = 0;
     public int $cost_from = 0;
@@ -17,19 +20,19 @@ class OffersList extends Component
 
 
     public bool $show_filters = false;
-    public $show_countries = false;
-    public $show_price = false;
-    public $show_cost = false;
-    public $show_source = false;
+    public bool $show_countries = false;
+    public bool $show_price = false;
+    public bool $show_cost = false;
+    public bool $show_source = false;
 
-    public function search($key)
+    public function search($key): void
     {
         $this->key = $key;
     }
 
-    public function filters()
+    public function filters(): void
     {
-        $this->show_filters = !$this->show_filters;
+        $this->show_filters = ! $this->show_filters;
 
         $this->show_countries = false;
         $this->show_price = false;
@@ -37,75 +40,85 @@ class OffersList extends Component
         $this->show_source = false;
     }
 
-    public function dropdown($section)
+    public function dropdown($section): void
     {
-        switch ($section){
+        switch ($section) {
             case 'countries':
-                $this->show_countries = !$this->show_countries;
+                $this->show_countries = ! $this->show_countries;
+
                 break;
             case 'price':
-                $this->show_price = !$this->show_price;
+                $this->show_price = ! $this->show_price;
+
                 break;
             case 'cost':
-                $this->show_cost = !$this->show_cost;
+                $this->show_cost = ! $this->show_cost;
+
                 break;
             case 'source':
-                $this->show_source = !$this->show_source;
+                $this->show_source = ! $this->show_source;
+
                 break;
         }
     }
 
-    public function filter($value, $method)
+    public function filter($value, $method): void
     {
         switch ($method){
             case 'price_from':
-                if($value!=null){
+                if($value){
                     $this->price_from = $value;
-                }else{
+                } else {
                     $this->price_from = 0;
                 }
+
                 break;
             case 'price_to':
-                if($value!=null){
+                if ($value) {
                     $this->price_to = $value;
-                }else{
+                }else {
                     $this->price_to = 10000;
                 }
+
                 break;
             case 'cost_from':
-                if($value!=null){
+                if ($value) {
                     $this->cost_from = $value;
-                }else{
+                } else {
                     $this->cost_from = 0;
                 }
+
                 break;
             case 'cost_to':
-                if($value!=null){
+                if ($value) {
                     $this->cost_to = $value;
-                }else{
+                } else {
                     $this->cost_to = 10000;
                 }
+
                 break;
             case 'country':
-                if(!in_array($value, $this->country)){
+                if (! in_array($value, $this->country)) {
                     $this->country[] = $value;
-                }else{
+                } else {
                     unset($this->country[array_search($value, $this->country)]);
                 }
+
                 break;
             case 'source':
-                if(!in_array($value, $this->source)){
+                if (! in_array($value, $this->source)) {
                     $this->source[] = $value;
-                }else{
+                } else {
                     unset($this->source[array_search($value, $this->source)]);
                 }
+
                 break;
         }
     }
 
-    public function render()
+    public function render(): View
     {
-        if($this->country == []){
+        if ($this->country == []){
             $offers = Offer::query()
                 ->where('title', 'like', '%' . $this->key . '%')
                 ->where('price','>=',$this->price_from)
@@ -113,7 +126,7 @@ class OffersList extends Component
                 ->where('cost','>=',$this->cost_from)
                 ->where('cost','<=',$this->cost_to)
                 ->orderBy('created_at', 'desc');
-        }else{
+        } else {
             foreach ($this->country as $country) {
                 $results = Offer::query()
                     ->where('title', 'like', '%' . $this->key . '%')
@@ -124,7 +137,7 @@ class OffersList extends Component
                     ->where('country','like', '%' . $country . '%')
                     ->orderBy('created_at', 'desc');
 
-                foreach ($results as $result){
+                foreach ($results as $result) {
                     $offers[] = $result;
                 }
             }
@@ -134,24 +147,26 @@ class OffersList extends Component
         $allowed_sources = [];
 
         foreach (Offer::all() as $offer) {
-            foreach(explode("\n", $offer->allowed_sources) as $line){
-                if(!in_array($line, $allowed_sources)){
+            foreach (explode("\n", $offer->allowed_sources) as $line) {
+                if (! in_array($line, $allowed_sources)) {
                     $allowed_sources[] = str_replace("\n", "", str_replace("\r", "", $line));
                 }
             }
         }
 
-        if(!isset($offers))
+        if (! isset($offers)) {
             $offers = $results;
+        }
 
-        if(!$this->source == []){
+        if (! $this->source == []) {
             $j = 0;
-            foreach ($this->source as $source)
-            {
+
+            foreach ($this->source as $source) {
                 $j++;
-                if($j == 1){
+
+                if ($j == 1) {
                     $offers = $offers->where('allowed_sources', 'like', '%'.$source.'%');
-                }else{
+                } else {
                     $offers = $offers->orWhere('allowed_sources', 'like', '%'.$source.'%');
                 }
             }

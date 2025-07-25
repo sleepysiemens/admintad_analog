@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 
 class PaymentMethods extends Component
@@ -62,7 +63,7 @@ class PaymentMethods extends Component
      */
     public array $selected_method = [];
 
-    public function mount()
+    public function mount(): void
     {
         $this->selected_method = $this->payment_methods['WebMoney'];
     }
@@ -71,12 +72,12 @@ class PaymentMethods extends Component
      * @param $method
      * @return Void
      */
-    public function select_method($method): Void
+    public function select_method($method): void
     {
         $this->selected_method = $this->payment_methods[$method];
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.payment-methods');
     }

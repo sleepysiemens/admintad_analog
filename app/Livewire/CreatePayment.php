@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 
 class CreatePayment extends Component
@@ -11,24 +12,24 @@ class CreatePayment extends Component
      */
     public string $currency = '';
 
-    public $remain = 0;
+    public int $remain = 0;
 
     /**
      * @param $currency
      * @return void
      */
-    public function mount($currency, $remain)
+    public function mount($currency, $remain): void
     {
         $this->currency = $currency;
         $this->remain = $remain;
     }
 
-    public function open_payment_form()
+    public function open_payment_form(): void
     {
         $this->dispatch('open-payment-form', ['currency' => $this->currency, 'remain' => $this->remain]);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.create-payment');
     }

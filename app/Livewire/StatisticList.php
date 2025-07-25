@@ -5,45 +5,48 @@ namespace App\Livewire;
 use App\Models\DailyStatistic;
 use App\Models\UserOffer;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class StatisticList extends Component
 {
-    public $date = '';
+    public string $date = '';
     public string $start_date = '';
     public string $end_date = '';
     public string $period = 'today';
 
-    public function mount()
+    public function mount(): void
     {
         $this->date = date('Y-m-d', strtotime('today'));
     }
 
-    public function change_period( string $period, string $date)
+    public function change_period( string $period, string $date): void
     {
         $this->period = $date;
+
         switch ($period) {
             case 'day':
-                if($date == 'today'){
+                if ($date == 'today') {
                     $this->date = 'today';
-                }elseif ($date == 'yesterday'){
+                } elseif ($date == 'yesterday') {
                     $this->date = 'yesterday';
                 }
-                break;
 
+                break;
             case 'week':
                 $this->start_date = 'monday this week';
                 $this->end_date = 'sunday this week';
-                break;
 
+                break;
             case 'month':
                 $this->start_date = 'first day of this month';
                 $this->end_date = 'last day of this month';
+
                 break;
         }
     }
 
-    public function render()
+    public function render(): View
     {
         $user_offers = UserOffer::query()
             ->join('offers', 'offers.id', 'user_offers.offer_id')
@@ -53,18 +56,17 @@ class StatisticList extends Component
 
         $offers = [];
 
-        foreach ($user_offers as $user_offer){
-            if($this->period == 'today' || $this->period == 'yesterday')
-            {
-                $new_line = DailyStatistic::firstOrCreate(['user_offer_id' => $user_offer->offer_id, 'created_at' => date("Y-m-d", strtotime($this->date))]);
+        foreach ($user_offers as $user_offer) {
+            if ($this->period == 'today' || $this->period == 'yesterday') {
+                $new_line = DailyStatistic::query()->firstOrCreate(['user_offer_id' => $user_offer->offer_id, 'created_at' => date("Y-m-d", strtotime($this->date))]);
                 $new_line->title = $user_offer->title;
                 $offers[] = $new_line;
-            }else {
+            } else {
                 $date = date("Y-m-d", strtotime($this->start_date));
 
-                $start_value = DailyStatistic::firstOrCreate(['user_offer_id' => $user_offer->offer_id, 'created_at' => $date]);
+                $start_value = DailyStatistic::query()->firstOrCreate(['user_offer_id' => $user_offer->offer_id, 'created_at' => $date]);
 
-                while ($date <= date("Y-m-d", strtotime($this->end_date))){
+                while ($date <= date("Y-m-d", strtotime($this->end_date))) {
                     $value = DailyStatistic::firstOrCreate(['user_offer_id' => $user_offer->offer_id, 'created_at' => date("Y-m-d", strtotime($date))]);
 
                     $start_value->hosts_count = $start_value->hosts_count + $value->hosts_count;

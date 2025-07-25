@@ -3,17 +3,20 @@
 namespace App\Livewire;
 
 use App\Models\UserSource;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class SourcesList extends Component
 {
     public array $source_cards = [];
-    public $sources = [];
+
+    public array $sources = [];
+
     public string $status = 'Всего';
 
-    public function mount()
+    public function mount(): void
     {
-        if(!auth()->user()->is_admin){
+        if (! auth()->user()->is_admin) {
             $this->source_cards = [
                 ['title' => 'Всего', 'color' => '66, 135, 245', 'count' => UserSource::query()->where('user_id', auth()->user()->id)->count()],
                 ['title' => 'Принят', 'color' => '13, 163, 0', 'count' => UserSource::query()->where('user_id', auth()->user()->id)->where('status','Принят')->count()],
@@ -22,7 +25,7 @@ class SourcesList extends Component
             ];
 
             $this->sources = UserSource::query()->where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
-        }else{
+        } else {
             $this->source_cards = [
                 ['title' => 'Всего', 'color' => '66, 135, 245', 'count' => UserSource::query()->count()],
                 ['title' => 'Принят', 'color' => '13, 163, 0', 'count' => UserSource::query()->where('status','Принят')->count()],
@@ -38,28 +41,32 @@ class SourcesList extends Component
         }
     }
 
-    public function filter($status)
+    public function filter($status): void
     {
         $this->status = $status;
 
-        if($status == 'Всего'){
+        if ($status == 'Всего') {
             $this->mount();
-        }else{
-            if(!auth()->user()->is_admin){
-                $this->sources = UserSource::query()->where('user_id', auth()->user()->id)->where('status', $status)->get();
-            }else{
-                $this->sources = UserSource::query()->where('status', $status)->get();
-            }
+
+            return;
         }
+
+        if (! auth()->user()->is_admin) {
+            $this->sources = UserSource::query()->where('user_id', auth()->user()->id)->where('status', $status)->get();
+
+            return;
+        }
+
+        $this->sources = UserSource::query()->where('status', $status)->get();
     }
 
-    public function change_status(UserSource $source ,$status)
+    public function change_status(UserSource $source ,$status): void
     {
         $source->update(['status' => $status, 'seen' => true]);
         $this->mount();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.sources-list');
     }

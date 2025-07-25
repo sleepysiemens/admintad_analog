@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserOffer;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class StatController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('pages.dashboard.stat.index');
     }
